@@ -1,0 +1,260 @@
+import React, { createContext, useEffect, useState,useContext } from 'react'
+import {useHistory} from "react-router-dom";
+import Input from "../Input";
+import "./Header.css";
+import Dialog from "../Dialog/Dialog";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import SearchTwoToneIcon from '@material-ui/icons/SearchTwoTone';
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import BusinessCenterRoundedIcon from '@material-ui/icons/BusinessCenterRounded';
+import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
+import ContactSupportRoundedIcon from '@material-ui/icons/ContactSupportRounded';
+import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
+import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
+import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
+import ArrowDropDownOutlinedIcon from '@material-ui/icons/ArrowDropDownOutlined';
+import TableChartIcon from '@material-ui/icons/TableChart';
+import TextField from '@material-ui/core/TextField';
+
+import Fab from '@material-ui/core/Fab';
+import EditIcon from '@material-ui/icons/Edit';
+import Post from '../Post/Post';
+import {ModalState} from "../Post/Post";
+import logo from '../../Images/collegMentor.png'
+import axios from 'axios';
+import List from "../List/List";
+
+
+function Header(props) {
+  const [isModal,setIsModal] = useState(false);
+  const [home_active,setHomeActive] = useState(false);
+  const [user_active,setUserActive] = useState(false);
+  const [member_active,setMemberActive] = useState(false);
+  const [Table,setTable] = useState(false);
+  const [help_active,setHelpActive] = useState(false);
+  const [allUserDetails,setAllUserDetails] = useState();
+  const [searchQueryResult,setSearchQueryResult] = useState();
+  const [isSearchEmpty,setIsSearchEmpty] = useState(false);
+  const history = useHistory();
+
+
+  function OpenModal(){
+      setIsModal(true); 
+
+  }
+
+  function HandleChange(){    // This is a callback function, if the close button is clicked 
+    setIsModal(false)
+  }
+
+ async function end(){
+    const logOutStatus = await axios.post("http://localhost:8080/logout");
+    console.log(logOutStatus)
+    if(logOutStatus.data.logOut == true){
+      history.push("/login");
+      props.loginChange(false);
+    }
+  }
+
+  async function userDetail(){                                                                            //to get user details
+    const userDetails = await axios.get("http://localhost:8080/userDetail");
+    console.log("userDatials",userDetails);
+    props.details(userDetails)                                                                            //calling function written in app.js
+    setAllUserDetails(userDetails);
+  }
+
+ async function searchHandler(event){
+    console.log(event.target.value);
+    const value = event.target.value;
+    if(value){
+      setIsSearchEmpty(true)
+    }else{
+      setIsSearchEmpty(false)
+    }
+   const all =  await axios.post("http://localhost:8080/all",{value:value});
+   setSearchQueryResult(all)
+  console.log(all)
+  }
+
+function postRender(){
+  props.post();
+}
+
+ function HeaderMiddle(){
+    return(
+      <div className="header_middle">
+              <div className="header_icon">
+                <div class="tooltip" style={{borderBottom: home_active || props.value == 0 ? "3px solid blue" : null}}>
+                  <IconButton onClick={()=>{
+                    props.onChange(1)
+                    setMemberActive(false);
+                    setUserActive(false);
+                    setHelpActive(false);
+                    setTable(false);
+                    setHomeActive(true);}}>
+                    <HomeRoundedIcon fontSize="large"  style={{color: home_active || props.value == 0 ? "blue" : null}}/>
+                  </IconButton>
+                  <span class="tooltiptext">Home</span>
+                </div>
+              </div>
+              <div className="header_icon">
+              <div class="tooltip" style={{borderBottom: user_active ? "3px solid blue" : null}}>
+                <IconButton  onClick={()=>{
+                  props.onChange(2)
+                  setMemberActive(false);
+                  setUserActive(true);
+                  setHelpActive(false);
+                  setTable(false);
+                  setHomeActive(false);
+                  }}>
+                  <BusinessCenterRoundedIcon fontSize="large" style={{color: user_active  ? "blue" : null}}/>
+                </IconButton>
+                <span class="tooltiptext">User-list</span>
+              </div>
+                </div>
+                <div className="header_icon">
+                <div class="tooltip" style={{borderBottom: member_active ? "3px solid blue" : null}}>
+                <IconButton onClick={()=>{
+                  props.onChange(3)
+                  setMemberActive(true);
+                  setUserActive(false);
+                  setHelpActive(false);
+                  setTable(false);
+                  setHomeActive(false);
+                  }} >
+                  <PeopleAltRoundedIcon fontSize="large" style={{color: member_active  ? "blue" : null}} />
+                  </IconButton>
+                  <span class="tooltiptext">Members</span>
+                </div>
+                </div>
+                <div className="header_icon">
+                <div class="tooltip" style={{borderBottom: Table ? "3px solid blue" : null}}>
+                <IconButton onClick={()=>{
+                  props.onChange(5)
+                  setMemberActive(false);
+                  setUserActive(false);
+                  setHelpActive(false);
+                  setHomeActive(false);
+                  setTable(true);
+                  }} >
+                  <TableChartIcon fontSize="large" style={{color: Table  ? "blue" : null}} />
+                  </IconButton>
+                  <span class="tooltiptext">Table</span>
+                </div>
+                </div>
+                <div className="header_icon">
+              <div class="tooltip" style={{borderBottom: help_active ? "3px solid blue" : null}}>
+                <IconButton onClick={()=>{
+                  props.onChange(4)
+                  setMemberActive(false);
+                  setUserActive(false);
+                  setHelpActive(true);
+                  setHomeActive(false);
+                  setTable(false);
+                  }} >
+                  <ContactSupportRoundedIcon fontSize="large" style={{color: help_active  ? "blue" : null}}/>
+                  </IconButton>
+                  <span class="tooltiptext">Help</span>
+              </div>
+                </div>
+            </div>
+    )
+  }
+
+  function HeaderRight(){
+    return(
+      <div className="header_right">
+      <div className="header_profile">
+        <IconButton onClick={()=>{props.onChange('profile')}}>
+          <Avatar src="https://tse1.mm.bing.net/th?id=OIP.6nCVjA0S936UiBlDUsov4QHaE9&pid=Api&P=0&w=245&h=165"  ></Avatar>
+        </IconButton>
+        <p style={{color:"black" , fontSize:"24px"}}>{allUserDetails ? allUserDetails.data.username : "none"}</p>
+      </div>
+      <div  className="add">
+      <div class="tooltip">
+        <IconButton onClick={OpenModal}>
+        <Fab color="primary" aria-label="edit" size="small">
+        <EditIcon />
+      </Fab>
+      </IconButton>
+        <span class="tooltiptext">Post</span>
+          <Post display={isModal? "block" : "none"} onChange = {HandleChange} post={postRender} userDetail={allUserDetails} />
+      </div>
+      </div>
+      <div className="message">
+      <div class="tooltip">
+      <IconButton >
+        <MessageOutlinedIcon  className="header_right_icon" style={{fontSize:"40px"}} />
+        </IconButton>
+        <span class="tooltiptext">Message</span>
+      </div>
+      </div>
+      <div className="notification">
+      <div class="tooltip">
+      <IconButton >
+        <NotificationsOutlinedIcon  className="header_right_icon" style={{fontSize:"40px"}} />
+        </IconButton>.
+        <span class="tooltiptext">Notifications</span>
+        </div>
+      </div>
+      <div className="down_arrow">
+      <div class="tooltip">
+        <Dialog end={end}/>
+      <span class="tooltiptext">logout</span>
+        </div>
+      </div>
+    </div>
+    )
+  }
+
+  function mainHeader(){
+    return(
+      <>
+      <div className="header_main">
+        <div className="header_left">
+              <img src={logo} style={{width:"80px", height:"70px"}}></img>
+              <div className="input_field">
+              <TextField
+                id="outlined-textarea"
+                label="Seacrh.."
+                placeholder="Your Fav?"
+                multiline
+                variant="outlined"
+                size="small"
+                onChange={searchHandler}
+              />
+              </div>
+            <div className="search_list">
+            <List value={searchQueryResult} searchFieldEmpty={isSearchEmpty}/>
+            </div>
+            </div>
+            
+            <HeaderMiddle />
+            <HeaderRight />
+      </div> 
+          
+      </>
+    )
+  }
+  useEffect(()=>{
+    userDetail();
+    mainHeader();
+  },[]);
+  
+  useEffect(()=>{
+    mainHeader();
+  },[allUserDetails]);
+  
+    return (
+        <>
+          {
+            
+            mainHeader()
+          }
+        </>
+    )
+}
+
+export default Header;
+

@@ -1,0 +1,134 @@
+.feed_container{
+  position: absolute;
+  top: 10vh;
+  left: 50%;
+  margin-left: -50%;
+  width: 99vw;
+}
+.feed_main{
+  border-radius: 16px;
+  box-shadow: 3px 2px 2px  rgb(206, 206, 207);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 500px;
+  padding-bottom: 20px;
+  min-width: 600px;
+  max-width: 700px;
+  background: linear-gradient( #acace9, #f5e2e0);
+}
+
+.feed_timestamp{
+  color: grey;
+  font-size: 1rem;
+  text-shadow: 1px 1px 1px rgb(194, 188, 188);
+  margin-left: 7px;
+  margin-top: 5px;
+  
+}
+
+.header_feed{
+    display: flex;
+    padding: 5px;
+}
+
+.avatar{
+  padding: 10px;
+  display: flex;
+}
+
+.feed_username{
+  position: relative;
+  top: 0px;
+  left: 10px;
+  font-size: 1.5rem;
+  width: max-content;
+  
+}
+
+.feed_dots{
+  margin-right: 10px;
+  font-size:larger;
+}
+
+.feed_title{
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 1.4rem;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-wrap: break-word;
+  
+}
+
+.feed_image{
+ padding: 15px;
+ border-radius: 16px;
+}
+
+.feed_description{
+  height: auto;
+  max-height: 80px;
+  margin: 20px 20px 0px 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e3e3e3;
+  font-weight: 400;
+  font-size: 1.4rem;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  overflow-y: hidden;
+  transition: max-height 0.5s ease;
+  overflow-wrap: break-word;
+}
+.des_checkbox{
+  display: none;
+}
+.des_checkbox:checked ~ .feed_description {
+  transition: max-height 2s ease;
+  max-height: 1000px;
+  /* height: 200px; */
+
+}
+.feed_footer{
+  display: flex;
+  position: relative;
+  width: 100%;
+  
+}
+.like{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  cursor: pointer;
+}
+.like:hover{
+  opacity: 0.7;
+}
+.comment{
+  position: absolute;
+  top: 20%;
+  left: 70%;
+  cursor: pointer;
+}
+.comment:hover{
+  opacity: 0.7;
+}
+.footer_icon_name{
+  color: gray;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 520;
+  margin: -10px;
+}
+@media(max-width:640px){
+  .feed_main{
+    margin: 20px 0px 20px 0px;
+    min-width: 100%;
+  }
+}
+.main{
+  width: 100% !important;
+}
+.main2{
+  margin: 0% !important;
+  min-width: 10px;
+}

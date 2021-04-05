@@ -1,0 +1,63 @@
+.study_form_main{
+  width: 60vw;
+  background: linear-gradient(rgb(187, 84, 187),#2121c4);
+  padding: 20px 50px;
+  border-radius: 10px;
+  position: relative;
+  top: 10vh;
+  left: 50%;
+  margin-left: -25%;
+}
+.study_form_main_heading{
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 500;
+  padding: 5px 10px;
+}
+.first_form{
+  display: flex;
+  flex-direction: column;
+}
+.subject{
+  color: white;
+  font-size: 1.5rem;
+}
+.selct_field{
+  border-radius: 10px;
+  height: 50px;
+  text-align: center;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1rem;
+}
+.second_row{
+  padding: 10px 20px;
+}
+.second_row>div{
+  margin-top: 10px;
+}
+.second_row>div>input{
+  height: 30px;
+  text-align: center;
+  font-size: 1rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-left: 10px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+.form_submit{
+  width: 80px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+}
+.form_error{
+  color: honeydew;
+  font-size: 1.2rem;
+  font-family: 500;
+}

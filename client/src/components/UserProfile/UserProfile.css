@@ -1,0 +1,200 @@
+.upper__profile{
+    position: relative;
+    width: 100%;
+    height: 15vh;
+}
+.upper__profile__avatar{
+    position: absolute;
+    left: 50%;
+    margin-left: -20%;
+}
+.upper__profile__button{
+    position: absolute;
+    top: 4vh;
+    left: 50%;
+    /* margin-left: -20%; */
+}
+.upper__profile__about{
+    position: absolute;
+    top: 8vh;
+    left: 5vw;
+}
+
+.Main_container{
+    position: fixed !important;
+    display: flex;
+    width: 85vw;
+    height: 87vh;
+    top: 12vh;
+    bottom: 12%;
+    left: 10%;
+    right: 10%;
+    padding: 40px;
+    background-color: rgba(202, 200, 200, 0.3);
+    position: absolute;
+    border-radius: 10px;
+}
+
+.col-1{
+    width: 50vw;
+    background: linear-gradient(  #d4cef8, #ead4f8, #f0e0f8);
+    box-shadow: 0 4px 8px 0 rgba(16, 9, 49, 0.2), 0 6px 20px 0 rgba(16, 9, 49, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 25px 20px 0px 30px;
+}
+
+.col-2{
+    position: relative;
+    display: block;
+    overflow-wrap: anywhere;
+    flex-direction: column;
+    width: 90vw;
+    box-shadow: 0 4px 8px 0  rgba(16, 9, 49, 0.2), 0 6px 20px 0 rgba(16, 9, 49, 0.2);
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: white;
+    height: 100%;
+    overflow-y: scroll;
+   
+} 
+
+.col-3{
+    background-image: url("https://cdn.s3waas.gov.in/s344c4c17332cace2124a1a836d9fc4b6f/uploads/bfi_thumb/2020051856-1024x460-opoxg7t8x91de4qi31dtsvuuo5rcf8fpx3bscqeeao.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    box-shadow: 0 4px 8px 0  rgba(16, 9, 49, 0.2), 0 6px 20px 0 rgba(16, 9, 49, 0.2);
+    
+}
+
+
+.col-1>p{
+    padding: 0px 0px 10px 60px;
+    font-family: 'Ultra', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 1px 1.5px 2px rgb(12, 3, 51);
+
+
+}
+
+.col-1>b{
+    margin: -10px 0px 3px 105px;
+    font-size: medium;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(99, 98, 98);
+    
+}
+
+.content{
+    font-size: 1.1rem;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 300;
+    padding: 30px 20px 0px 20px;
+}
+
+.content>div{
+    font-size: 1.3rem;
+    color: rgb(116, 114, 114);
+}
+
+.content >p{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-top: 10px;
+}
+
+.profile_content{
+    font-family: 'News Cycle', sans-serif;
+    font-size: 0.9rem;
+    line-height: 2rem;
+    position: relative;
+}
+
+.label{
+    color: rgb(22, 44, 131);
+   font-weight: bold;
+   margin-right: 10px;
+   
+}
+
+.Gender{
+   padding-right: 45px; 
+}
+
+.DOB{
+    padding-right: 10px;
+}
+
+.Country{
+    padding-right: 45px
+}
+
+.Collage{
+    padding-right: 47px;
+}
+
+.Study{
+   padding-right: 60px;
+}
+
+.Batch-year{
+    padding-right: 25px;
+}
+
+.PNumber{
+    padding-right: 30px;
+}
+
+.Email{
+    padding-right: 40px;
+}
+
+.Social_icon{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 0;
+    padding-top: 50%;
+}
+
+.Instagram_icon :hover{
+    background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+    background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+}
+
+.Facebook_icon:hover{
+    background-color: #39569c;
+}
+
+.linkdin_icon:hover{
+    background-color: #0e76a8;
+}
+
+.Twitter_icon:hover{
+    background-color: #00acee;
+}
+
+.About_me{
+    padding: 3px 0px 15px 0px;
+    font-size: 1.1rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.Nav_box{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px ;
+    font-size: 1.2rem;
+    font-weight: 550;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: linear-gradient(#d2c5f3,#edd3f7 );
+    box-shadow: 0 6px 10px -6px rgb(39, 38, 38);
+}
+
+
+

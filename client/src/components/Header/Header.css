@@ -1,0 +1,157 @@
+
+.header_main{
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0px;
+  background-color: white;
+  box-sizing: content-box;
+  box-shadow: 2px 5px 5px 5px rgb(216, 213, 213);
+  z-index: 1;
+  width: 99.7%;
+  
+}
+.header_left{
+  display: flex;
+}
+
+.input_field{
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.input_field::placeholder{
+  text-align: center;
+}
+
+.seacrh_button{
+  position: relative;
+  top: 28px;
+  left: 40px;
+  border: none;
+}
+
+.header_middle{
+  display: flex;
+  margin-top: 5px;
+}
+
+.header_icon{
+  border-radius: 5px;
+  height: fit-content;
+  padding: 0px 5px 0px 5px;
+  margin-right: 10px;
+}
+
+
+.header_icon:hover{
+  background-color: rgb(230, 230, 230);
+}
+.home_active {
+  border-bottom: 4px solid blue;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  min-width: 70px;
+  max-width: 100px;
+  text-align: center;
+  background-color: rgb(99, 96, 96);
+  border-radius: 5px;
+  padding: 5px 0;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-top: 5px;
+  margin-left: -35px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.header_right{
+  display: flex;
+  margin-top: 5px;
+}
+.header_profile{
+  display: flex;
+  margin-right: 10px;
+  height: fit-content;
+}
+
+.header_profile > p{
+  margin-top: 20px;
+  margin-left: 5px;
+  height: fit-content;
+}
+
+.header_right_icon{
+  border-radius: 15px;
+  color: black;
+  height: fit-content;
+  margin: 0px;
+  padding: 5px;
+  background-color: rgb(218, 214, 214);
+}
+
+.add{
+  margin-right: 10px;
+  height: fit-content;
+}
+
+.message{
+  margin-right: 10px;
+  height: fit-content;
+}
+
+.notification{
+  margin-right: 10px;
+  height: fit-content;
+}
+
+.down_arrow{
+  height: fit-content;
+}
+
+.h{
+  color: blue;
+}
+.search_list{
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -44%;
+}
+@media(max-width:640px){
+  .header_main{
+    width: 100vw;
+    box-shadow: 0px 0px 5px 5px gray;
+  }
+  .header_right{
+    display: none;
+  }
+  .header_middle{
+    width: 100vw;
+    position: fixed;
+    bottom: 0vh;
+    background-color: white;
+    justify-content: space-around;
+  }
+  .header_middle > .header_icon {
+    margin-right: 0px;
+  }
+}

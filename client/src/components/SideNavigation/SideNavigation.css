@@ -1,0 +1,88 @@
+
+.side_nav{
+    width: 65px;
+    /* height: 100vh; */
+    position: fixed;
+    top:20%;
+    z-index: 10;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 10px;
+    border-radius: 25px;
+    overflow-x: hidden;
+    transition: all 1s ease;
+    background-color: slategray;
+}
+.side_nav:hover{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    width: 200px;
+}
+.user_profile{
+    display: flex;
+    margin-top: 15px;
+    padding: 5px 5px 5px 20px;
+    
+}
+
+.user_profile:hover{
+    background-color: rgb(240, 240, 240);     
+}
+
+.friends{
+    display: flex;
+    margin-top: 15px;
+    padding: 5px 5px 3px 20px;
+    
+}
+
+.friends:hover{
+    background-color: rgb(240, 240, 240); 
+}
+
+.events{
+    display: flex;
+    margin-top: 15px;
+    padding: 5px 5px 1px 20px;
+    
+}
+
+.events:hover{
+    background-color: rgb(240, 240, 240); 
+}
+
+.groups{
+    display: flex;
+    margin-top: 15px;
+    padding: 5px 5px 3px 20px;
+    
+}
+
+.groups:hover{
+    background-color: rgb(240, 240, 240); 
+}
+
+.pages{
+    display: flex;
+    margin-top: 15px;
+    padding: 5px 5px 3px 20px;
+    
+}
+
+.pages:hover{
+    background-color: rgb(240, 240, 240); 
+}
+
+.side_nav_icon_name{
+    font-size: 1.5rem;
+    font-family: inherit;
+    margin-left: 10px;
+    height: fit-content;
+    background-color:transparent;
+}
+@media(max-width:640px){
+    .side_nav{
+        display: none;
+    }
+}
