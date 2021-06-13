@@ -106,15 +106,19 @@ app.listen(process.env.PORT || 8080, () => {
 app.post("/register", (req, res) => {
     console.log("register post called");
     const { username, email, password } = req.body;
-
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(password, salt, async function (err, hash) {
-            // console.log(username, email, salt, hash);
-            const user = new User({ username: username, email: email, salt: salt, password: hash });
-            await user.save();
-            res.send({ status: "successfully registered" });
+    try{
+        bcrypt.genSalt(10, function (err, salt) {
+            bcrypt.hash(password, salt, async function (err, hash) {
+                // console.log(username, email, salt, hash);
+                const user = new User({ username: username, email: email, salt: salt, password: hash });
+                await user.save();
+                res.send({ status: "successfully registered" });
+            });
         });
-    });
+    }catch(err){
+        console.log(err);
+    }
+
 })
 
 app.post("/user_info", async (req, res) => {
@@ -146,8 +150,10 @@ app.post("/login", async (req, res) => {
         })
     }
     else {
-        console.log("invalid credentials 2");
+        console.log("No user found");
         // username or password is incorrect.
+        res.send({state:false});
+
     }
 });
 

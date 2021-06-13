@@ -2,18 +2,19 @@ import React, { useState,useEffect } from 'react'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import Input from "../Input";
 import "./Login.css";
 import Button from "../Button/Button";
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import MuiAlert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {BrowserRouter as Router, Redirect, Switch,Route,useHistory} from "react-router-dom";
 
 function Login(props) {
-  const [show, setShow] = useState(false);
-  const [status,setStatus] = useState();
+  const[progress,setProgress] = useState(false);
+  const[alert,setAlert]=useState(false);
   const history = useHistory();
 
   const LoginSchema = Yup.object().shape({
@@ -41,6 +42,8 @@ axios.defaults.withCredentials= true;
       if(loginState.data.state == "loggedIn"){
         props.login(loginState.data.userName);
         history.push("/home");
+      }else{
+        setAlert(true);
       }
       
     }
@@ -73,6 +76,7 @@ axios.defaults.withCredentials= true;
           {({ errors, touched }) => (
             <Form>
               <div className="auth_field_username" >
+              <MuiAlert elevation={6} variant="filled" severity="error"  style={{position:"fixed",top:"12vh",zIndex:"1000",display:alert ? "flex" : "none"}}> Incorrect Credentials</MuiAlert>
                 <div className="email_icon">
                   <MailOutlineIcon fontSize="large"  />
                 </div>
@@ -97,12 +101,11 @@ axios.defaults.withCredentials= true;
                   {errors.password && touched.password ? (
                     <div>{errors.password}</div>
                   ) : null}
-                  {/* <Button onClick={() => { setShow(!show) }} value={"view"}></Button> */}
                 </div>
               </div>
               <div style={{display:"flex"}}>
                 <div>
-                  <Button type="submit" value="Login" className="login_button" />
+                  <button type="submit" className="login_button" onClick={(()=>{setProgress(true);})} > {progress ? <CircularProgress size={20} thickness={4} color="secondary" /> : "Login"} </button>
                 </div>
                 <div>
                   <Button type="button" value="Create Account" className="create_account_button" onClick={()=> props.userHandler("register")}/>

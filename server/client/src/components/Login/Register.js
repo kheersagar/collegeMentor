@@ -8,11 +8,14 @@ import Button from "../Button/Button";
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import FaceIcon from '@material-ui/icons/Face';
 
 function Register(props) {
   const [show, setShow] = useState(false);
+  const[progress,setProgress] = useState(false);
   const [isRegistered,setIsRegistered ] = useState();
+  
 
   const SignupSchema = Yup.object().shape({
     username: Yup.string()
@@ -124,7 +127,7 @@ function Register(props) {
               </div>
               <div style={{display:"flex"}}>
               <div>
-                <Button type="submit" value="Register" className="Register_button" />
+                <button type="submit"  className="Register_button" onClick={(()=>{setProgress(true);})}>{progress ? <CircularProgress size={20} thickness={4} color="secondary" /> : "Register"}</button>
               </div>
               <div>
                 <Button type="button" value="Sign In" className="create_account_button" onClick={()=> props.userHandler("login")}/>

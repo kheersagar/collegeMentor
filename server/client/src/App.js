@@ -131,7 +131,8 @@ function Main(){
           setUser(" ");
         },3000)}
       </>  
-      : null }
+      : null
+         }
       </div>
       {user == "register" ? <Register userHandler={changeUserHandler}/> : <Login login={check} userHandler={changeUserHandler}/>}
 
