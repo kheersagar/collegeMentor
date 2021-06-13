@@ -50,7 +50,7 @@ function UserForm() {
         data.course = course
       }
       console.log(data);
-      const loginState = await axios.post(`${process.env.REACT_APP_BASE_URL}/user_info`,data);
+      const loginState = await axios.post(`/user_info`,data);
       if(loginState.data){
         setFirstName('')
         setlastName('')

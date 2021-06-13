@@ -67,7 +67,7 @@ function App() {
     }
     if(action.type == "updated profile"){
      const profile =  async ()=> {
-        const data = await axios.get(`${process.env.REACT_APP_BASE_URL}/userDetail`);
+        const data = await axios.get(`/userDetail`);
           console.log("updated");
           setUserData(data);
       }
@@ -92,7 +92,7 @@ function App() {
   }
   
 async function check (userName){
-   const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/login`);
+   const response = await axios.get(`/login`);
    console.log(loginStatus);
    if(response.data.loggedIn){
      setLoginStatus(response.data.loggedIn);  

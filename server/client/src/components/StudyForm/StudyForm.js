@@ -35,7 +35,7 @@ function StudyForm() {
     formData.append('file5',file5);
     formData.append('file6',file6);
 
-    const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/studyMaterial`,formData);
+    const res = await axios.post(`/studyMaterial`,formData);
     if(res.data.status == "updated"){
       setIsProgress(false);
       setAlert(true);

@@ -54,7 +54,7 @@ function Post(props) {
       formData.append('Description',Description);
       formData.append('image',filePicker.current.files[0]);
       formData.append('timestamp',timestamp);
-      const x = await axios.post(`${process.env.REACT_APP_BASE_URL}/create-post`,formData).then((res)=> {
+      const x = await axios.post(`/create-post`,formData).then((res)=> {
         console.log(res);
         props.post();
       });

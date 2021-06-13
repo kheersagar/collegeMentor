@@ -51,7 +51,7 @@ function Header(props) {
   }
 
  async function end(){
-    const logOutStatus = await axios.post(`${process.env.REACT_APP_BASE_URL}/logout`);
+    const logOutStatus = await axios.post(`/logout`);
     console.log(logOutStatus)
     if(logOutStatus.data.logOut == true){
       history.push("/login");
@@ -60,7 +60,7 @@ function Header(props) {
   }
 
   async function userDetail(){                                                                            //to get user details
-    const userDetails = await axios.get(`${process.env.REACT_APP_BASE_URL}/userDetail`);
+    const userDetails = await axios.get(`/userDetail`);
     props.details(userDetails)                                                                            //calling function written in app.js
     setAllUserDetails(userDetails);
     dispatch({type:"userDetails",value:userDetails});
@@ -81,13 +81,13 @@ function Header(props) {
         props.onChange("search");
         setIsSearchEmpty(false)
 
-        await axios.post(`${process.env.REACT_APP_BASE_URL}/keyword`,{value:value});
+        await axios.post(`/keyword`,{value:value});
       }
     }else{
       console.log("false")
       setIsSearchEmpty(false)
     }
-    const all =  await axios.post(`${process.env.REACT_APP_BASE_URL}/all`,{value:value});
+    const all =  await axios.post(`/all`,{value:value});
     setSearchQueryResult(all)
   }
 

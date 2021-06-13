@@ -19,7 +19,7 @@ function Feed(props) {
         try{
             const posts = await axios.request({
                 method:"GET",
-                url:`${process.env.REACT_APP_BASE_URL}/allPost`,
+                url:`/allPost`,
                 headers: {
                    'data': props.headers ,
                     'id' : props.id
@@ -77,7 +77,7 @@ function Feed(props) {
             <div className={`feed_main ${props.class2}`} key={posts.timestamp + Math.random()}>
 
               <div className="feed_image">
-                <img src={`${process.env.REACT_APP_BASE_URL}/${posts.image}`} width="100%" style={{ maxHeight: "400px", display: posts.image ? "block" : "none", borderRadius: "16px" }} />
+                <img src={`/${posts.image}`} width="100%" style={{ maxHeight: "400px", display: posts.image ? "block" : "none", borderRadius: "16px" }} />
               </div>
               <div className="feed_title">{posts.Title}</div>
               <input type="checkbox" className="des_checkbox" id={posts._id}/>

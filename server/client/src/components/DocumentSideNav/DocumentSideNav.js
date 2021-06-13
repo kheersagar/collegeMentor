@@ -58,10 +58,10 @@ setIsMaterial({notes:notes,pdf:pdf});
         <Grid item sm={6} xs={12}>
           <Paper className={classes.paper} style={{boxShadow:"0 7px 6px -6px #777",color:"black"}}>MATERIALS</Paper>
           {
-            isMaterial.pdf ?<PDFViewer document={{url: `${process.env.REACT_APP_BASE_URL}/${isMaterial.pdf}`}}/>:  null
+            isMaterial.pdf ?<PDFViewer document={{url: `/${isMaterial.pdf}`}}/>:  null
           }
         </Grid>
-        {isMaterial.pdf ? <a href={`${process.env.REACT_APP_HOST}${isMaterial.pdf}`} download="My_File.pdf" target="_blank" className="download"> Download Here </a> : null}
+        {isMaterial.pdf ? <a href={`/${isMaterial.pdf}`} download="My_File.pdf" target="_blank" className="download"> Download Here </a> : null}
       </Grid>
     </div>
   );

@@ -34,7 +34,7 @@ function Contact() {
 
         }
         console.log(obj);
-     const response =  await axios.post(`${process.env.REACT_APP_BASE_URL}/contact`,obj);
+     const response =  await axios.post(`/contact`,obj);
      if(response.data){
          setTimeout(()=>{
             setIsProgress(false);

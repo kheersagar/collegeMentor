@@ -29,7 +29,7 @@ axios.defaults.withCredentials= true;
     try {
       const loginState = await axios.request({
         method: 'POST',
-        url: `${process.env.REACT_APP_BASE_URL}/login`,
+        url: `/login`,
         headers: {
           'Content-Type': 'application/json'
         },

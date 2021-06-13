@@ -22,7 +22,7 @@ function Timetable(props) {
     console.log(values)
     if(values.t1 != "" && values.t2 != ""){
       setIsTable(false);
-      await axios.post(`${process.env.REACT_APP_BASE_URL}/time`,{values});
+      await axios.post(`/time`,{values});
     }else{
       alert("Empty!!");
       return false;

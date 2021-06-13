@@ -30,7 +30,7 @@ function Register(props) {
     try {
      const status = await axios.request({
         method: 'POST',
-        url: `${process.env.REACT_APP_BASE_URL}/register`,
+        url: `/register`,
         headers: {
           'Content-Type' : 'application/json'
         },
