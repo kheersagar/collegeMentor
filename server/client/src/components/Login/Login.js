@@ -58,7 +58,7 @@ axios.defaults.withCredentials= true;
         <div className="textANI three">
         <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span><br/><span>B</span><span>a</span><span>c</span><span>k</span>
         </div>
-        <p >To keep connected with us please login with your perosinal informmation by email address and password <NotificationsIcon style={{ color: "orange" }} /> </p>
+        <p >To keeppppp connected with us please login with your perosinal informmation by email address and password <NotificationsIcon style={{ color: "orange" }} /> </p>
 
         <Formik
           initialValues={{
