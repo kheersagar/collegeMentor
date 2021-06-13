@@ -72,6 +72,8 @@ function Header(props) {
 
  async function searchHandler(event){
     const value = event.target.value;
+    const all =  await axios.post(`/all`,{value:value});
+    setSearchQueryResult(all)
     if(value){
       setIsSearchEmpty(true)
       //to check enter is pressed in the search bar
@@ -87,8 +89,7 @@ function Header(props) {
       console.log("false")
       setIsSearchEmpty(false)
     }
-    const all =  await axios.post(`/all`,{value:value});
-    setSearchQueryResult(all)
+
   }
 
 function postRender(){

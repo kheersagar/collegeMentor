@@ -23,11 +23,6 @@ function Chat(props) {
     const sendButton = useRef();
     const {dispatch} = useContext(MyContext)
 
-    console.log("sender",props.loggedInUser.data._id);
-    console.log("receiver",props.value._id);
-
-
-
     let chatboxStyles = {
         height: chatboxheight,
         transition: "height 0.4s ease",

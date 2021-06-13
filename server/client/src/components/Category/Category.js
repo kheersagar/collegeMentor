@@ -26,7 +26,7 @@ export default function Category() {
   const [size,setSize] = useState();
   async function change(val,code){
     if(val){
-      const semValue = await axios.get(`http://localhost:8080/study/${code}`);
+      const semValue = await axios.get(`/study/${code}`);
       setIsSub({value:semValue,courseName:val});
     }
   }
