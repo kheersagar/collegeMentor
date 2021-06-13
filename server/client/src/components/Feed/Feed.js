@@ -91,8 +91,8 @@ function Feed(props) {
                   </div>
                 </div>
                 <div className="feed_footer">
-                  <div className="like"><ThumbUpAltOutlinedIcon fontSize="medium" /> <span className="footer_icon_name">Like</span></div>
-                  <div className="comment"><ChatBubbleOutlineIcon fontSize="medium" /><span className="footer_icon_name">Comment</span></div>
+                  <div className="like"><ThumbUpAltOutlinedIcon fontSize="medium" /> <span className="footer_icon_name"></span></div>
+                  <div className="comment"><ChatBubbleOutlineIcon fontSize="medium" /><span className="footer_icon_name"></span></div>
                 </div>
               </div>
             </div>

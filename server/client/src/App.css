@@ -41,7 +41,6 @@
     background-color: white;
   }
   .content_main{
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    padding: 3rem 1.5rem;
   }
 }

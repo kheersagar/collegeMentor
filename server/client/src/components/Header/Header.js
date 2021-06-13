@@ -108,7 +108,7 @@ function postRender(){
                     setHelpActive(false);
                     setTable(false);
                     setHomeActive(true);}}>
-                    <HomeRoundedIcon fontSize="large"  style={{color: home_active || props.value == 0 ? "blue" : null}}/>
+                    <HomeRoundedIcon fontSize="medium"  style={{color: home_active || props.value == 0 ? "blue" : null}}/>
                   </IconButton>
                   <span class="tooltiptext">Home</span>
                 </div>
@@ -123,7 +123,7 @@ function postRender(){
                   setTable(false);
                   setHomeActive(false);
                   }}>
-                  <BusinessCenterRoundedIcon fontSize="large" style={{color: user_active  ? "blue" : null}}/>
+                  <BusinessCenterRoundedIcon fontSize="medium" style={{color: user_active  ? "blue" : null}}/>
                 </IconButton>
                 <span class="tooltiptext">Materials</span>
               </div>
@@ -138,7 +138,7 @@ function postRender(){
                   setTable(false);
                   setHomeActive(false);
                   }} >
-                  <PeopleAltRoundedIcon fontSize="large" style={{color: member_active  ? "blue" : null}} />
+                  <PeopleAltRoundedIcon fontSize="medium" style={{color: member_active  ? "blue" : null}} />
                   </IconButton>
                   <span class="tooltiptext">UserForm</span>
                 </div>
@@ -153,7 +153,7 @@ function postRender(){
                   setHomeActive(false);
                   setTable(true);
                   }} >
-                  <TableChartIcon fontSize="large" style={{color: Table  ? "blue" : null}} />
+                  <TableChartIcon fontSize="medium" style={{color: Table  ? "blue" : null}} />
                   </IconButton>
                   <span class="tooltiptext">Table</span>
                 </div>
@@ -168,7 +168,7 @@ function postRender(){
                   setHomeActive(false);
                   setTable(false);
                   }} >
-                  <ContactSupportRoundedIcon fontSize="large" style={{color: help_active  ? "blue" : null}}/>
+                  <ContactSupportRoundedIcon fontSize="medium" style={{color: help_active  ? "blue" : null}}/>
                   </IconButton>
                   <span class="tooltiptext">Help</span>
               </div>
@@ -182,7 +182,7 @@ function postRender(){
       <div className="header_right">
       <div className="header_profile">
         <IconButton onClick={()=>{dispatch({type:"profile",value:allUserDetails})}}>
-          <Avatar src="https://tse1.mm.bing.net/th?id=OIP.6nCVjA0S936UiBlDUsov4QHaE9&pid=Api&P=0&w=245&h=165"  ></Avatar>
+          <Avatar src="https://tse1.mm.bing.net/th?id=OIP.6nCVjA0S936UiBlDUsov4QHaE9&pid=Api&P=0&w=245&h=165" fontSize="small" ></Avatar>
         </IconButton>
         <p style={{color:"black" , fontSize:"24px"}}>{allUserDetails ? allUserDetails.data.username : "none"}</p>
       </div>
@@ -190,7 +190,7 @@ function postRender(){
       <div class="tooltip">
         <IconButton onClick={OpenModal}>
         <Fab color="primary" aria-label="edit" size="small">
-        <EditIcon />
+        <EditIcon  fontSize="small"/>
       </Fab>
       </IconButton>
         <span class="tooltiptext">Post</span>
@@ -200,7 +200,7 @@ function postRender(){
       <div className="message">
       <div class="tooltip">
       <IconButton >
-        <MessageOutlinedIcon  className="header_right_icon" style={{fontSize:"40px"}} />
+        <MessageOutlinedIcon  className="header_right_icon"  fontSize="large" />
         </IconButton>
         <span class="tooltiptext">Message</span>
       </div>
@@ -208,14 +208,14 @@ function postRender(){
       <div className="notification">
       <div class="tooltip">
       <IconButton >
-        <NotificationsOutlinedIcon  className="header_right_icon" style={{fontSize:"40px"}} />
+        <NotificationsOutlinedIcon  className="header_right_icon" fontSize="large"/>
         </IconButton>.
         <span class="tooltiptext">Notifications</span>
         </div>
       </div>
       <div className="down_arrow">
       <div class="tooltip">
-        <Dialog end={end}/>
+        <Dialog end={end} fontSize="small" />
       <span class="tooltiptext">logout</span>
         </div>
       </div>
@@ -228,7 +228,7 @@ function postRender(){
       <>
       <div className="header_main">
         <div className="header_left">
-              <img src={logo} style={{width:"80px", height:"70px"}}></img>
+              <img src={logo} style={{width:"70px", height:"50px",marginTop:"2px"}}></img>
               <div className="input_field">
               <TextField
                 id="outlined-textarea"
