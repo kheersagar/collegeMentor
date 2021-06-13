@@ -77,7 +77,7 @@ function DisplayTable(props) {
 
   async function tableCall(){
     try{
-     const result = await axios.get("http://localhost:8080/get-table");
+     const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-table`);
     setCount(result.data)  
    
     console.log("result",Object.values(result.data) )
@@ -91,7 +91,7 @@ function DisplayTable(props) {
 
   async function tableDeleteHandler(e){
 
-    const res = await axios.delete(`http://localhost:8080/delete-table/${e.target.value}`);
+    const res = await axios.delete(`${process.env.REACT_APP_BASE_URL}/delete-table/${e.target.value}`);
     console.log("response",res);
     setResponse(res.data);
   }

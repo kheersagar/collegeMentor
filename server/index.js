@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
@@ -17,6 +18,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const post = require("./PostSchema.js");
 const studyMaterial = require("./StudyMaterial");
+const contactus = require("./contacts");
 
 const MIME_TYPE_MAP = {
     'image/png': 'png',
@@ -59,9 +61,8 @@ const jsonparser = bodyParser.json();
 const app = express();
 
 
-
 //-------Mongoose----------
-mongoose.connect('mongodb://localhost:27017/collegeMentor_Users_Test', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`${process.env.MONGODB_HOST_URL}`, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
@@ -73,15 +74,15 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(cors({
-    origin: ["http://localhost:3000"],
+    origin: process.env.ORIGIN,
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true
 }));
 
 app.use(cookieParser());
 app.use(session({
-    key: "userID",
-    secret: "mySecret",
+    key: `${process.env.KEY}`,
+    secret: `${process.env.SECRET}`,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -90,11 +91,15 @@ app.use(session({
 
 }))
 
-app.use("/uploads/images",express.static(path.join("uploads","images")));
-app.use("/uploads/pdf",express.static(path.join("uploads","pdf")));
+app.use("/uploads/images", express.static(path.join("uploads", "images")));
+app.use("/uploads/pdf", express.static(path.join("uploads", "pdf")));
 
-app.listen(8080, () => {
-    console.log("server started on port 8080");
+if(process.env.NODE_ENV == "production"){
+    app.use(express.static("client/build"));
+}
+
+app.listen(process.env.PORT || 8080, () => {
+    console.log(`server started on port ${process.env.PORT}`);
 })
 
 
@@ -107,8 +112,21 @@ app.post("/register", (req, res) => {
             // console.log(username, email, salt, hash);
             const user = new User({ username: username, email: email, salt: salt, password: hash });
             await user.save();
+            res.send({ status: "successfully registered" });
         });
     });
+})
+
+app.post("/user_info", async (req, res) => {
+    const value = req.body;
+    const result = await User.updateOne({ _id: req.session.user }, value,(err,sucess)=>{
+        if(!err){
+            res.send(true);
+        }else{
+            res.send(false);
+        }
+    });
+    console.log("result: ", result.nModified);
 })
 
 app.post("/login", async (req, res) => {
@@ -148,34 +166,42 @@ app.post("/logout", (req, res) => {
     res.send({ logOut: true });
 })
 
-app.post("/create-post", fileUpload.single('image'), function (req, res) {
+app.post("/create-post", fileUpload.single('image'), async function (req, res) {
     let post;
     const Title = req.body.Title;
     const Description = req.body.Description;
     const timestamp = req.body.timestamp;
     const userId = req.session.user;
-    if(req.file){
+    if (req.file) {
         console.log("file")
         post = new Post({
             Title: Title,
             Description: Description,
             image: req.file.path,
-            timestamp:timestamp,
-            userId:userId
+            timestamp: timestamp,
+            userId: userId
 
         });
     }
-    
-    else{
-            post = new Post({
-            Title:Title,
-            Description:Description,
-            timestamp:timestamp,
-            userId:userId
+
+    else {
+        post = new Post({
+            Title: Title,
+            Description: Description,
+            timestamp: timestamp,
+            userId: userId
         });
     }
 
-    post.save(function (err, response) {
+    await User.findByIdAndUpdate(req.session.user,{$push:{"postSearch":Title}},(err,result)=>{
+      if(!err){
+        console.log(result)
+      }else{
+        console.log(err)
+      }
+    })
+
+   post.save(function (err, response) {
         if (err) {
             console.log(err);
             res.json({ uploaded: false });
@@ -186,24 +212,23 @@ app.post("/create-post", fileUpload.single('image'), function (req, res) {
     });
 });
 
-app.get("/allPost", function (req, res) {
+app.get("/allPost", async function (req, res) {
 
+    console.log(req.headers.id)
     const check = req.headers.data;
-    if( check == "userProfileData"){
-        console.log("entered")
-        Post.find({userId:req.session.user}).populate('userId').exec((err,posts)=>{
-            if(err){
-                console.log(err)
-            }else{
+    if (check == "userProfileData") {
+        Post.find({ userId: req.headers.id }).populate('userId').exec((err, posts) => {
+            if (err) {
+                console.log(err);
+            } else {
                 res.send(posts);
             }
         })
-    }else{
-        console.log("entered 2")
-        Post.find().populate('userId').exec((err,posts)=>{
-            if(err){
-                console.log(err)
-            }else{
+    } else {
+        Post.find().populate('userId').exec((err, posts) => {
+            if (err) {
+                console.log(err);
+            } else {
                 res.send(posts);
             }
         })
@@ -307,20 +332,20 @@ app.post("/time", function (req, res) {
 });
 
 
-app.get("/get-table", (req, res) => {
-    Timetable.find({userId:req.session.user}).populate('userId').exec((err,result)=>{
-        if(err){
-            console.log(err)
-        }else{
-            res.send(result)
+app.get("/get-table", async (req, res) => {
+    Timetable.find({ userId: req.session.user }).populate('userId').exec((err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
         }
     })
 })
 
-app.delete("/delete-table/:id", function (req, res) {
+app.delete("/delete-table/:id", async function (req, res) {
     console.log(req.params.id);
 
-    Timetable.deleteOne({ _id: req.params.id }, (err, result) => {
+    await Timetable.deleteOne({ _id: req.params.id }, (err, result) => {
         if (err) {
             console.log(err)
         } else {
@@ -329,69 +354,109 @@ app.delete("/delete-table/:id", function (req, res) {
     })
 });
 
-app.get("/userDetail", (req, res) => {
+app.get("/userDetail", async (req, res) => {
     let allUserDetails;
     const userId = req.session.user;
-    User.findOne({_id:userId},(err,result)=>{
-        allUserDetails=result;
+    await User.findOne({ _id: userId }, (err, result) => {
+        allUserDetails = result;
         res.send(allUserDetails);
-    });    
-    
+    });
+
 });
 
-app.post("/all",(req,res)=>{
-    const value =req.body.value;
-    let users,posts;
-    if(value){
-        User.find({ username: { $regex: value, $options: "i" } },(err,userResult)=>{
+app.post("/all", async (req, res) => {
+    const value = req.body.value;
+    let users, posts;
+    console.log("1", value)
+    if (value) {
+        await User.find({ username: { $regex: value, $options: "i" } }, (err, userResult) => {
             users = userResult;
         });
-        Post.find({ Title: { $regex: value, $options: "i" } },(err,postResult)=>{
+        await Post.find({ Title: { $regex: value, $options: "i" } }, (err, postResult) => {
             posts = postResult;
-            res.send({userSearchResult:users,postsSearchResult:posts});
+            res.send({ userSearchResult: users, postsSearchResult: posts });
         });
-
-        
     }
 })
 
+app.post("/keyword",async (req,res)=>{
+  await User.findByIdAndUpdate(req.session.user,{$push:{"userSearch":req.body.value}},(err,result)=>{
+    if(!err){
+      console.log(result)
+    }else{
+      console.log(err)
+    }
+  })
+});
 
-app.get("/study/:code",(req,res)=>{
+app.post("/recommend",async (req,res)=>{
+
+    let postSearchKeyword ;
+    var recommend = {
+        user:[]
+    };
+    await User.findById(req.session.user,(err,result)=>{
+       postSearchKeyword = result.postSearch;
+        // to remove duplicate data in array
+        postSearchKeyword = postSearchKeyword.filter((c,index)=>{
+        return postSearchKeyword.indexOf(c) === index;
+        });
+    });
+    try{
+        await postSearchKeyword.map(async(e,index)=>{
+            Post.find({ Title: { $regex: e, $options: "i" } }).populate('userId').exec((err, posts) => {
+                posts.map((post) => {
+                    recommend.user.push(post.userId);
+                });
+    
+                if (index == (postSearchKeyword.length - 1)) {
+                    res.send(recommend);
+                }
+            });
+        });
+    }catch(ex){
+        console.log(ex);
+    }
+
+     
+    
+   
+});
+
+app.get("/study/:code", async (req, res) => {
     console.log(req.params.code)
-    studyMaterial.find({code:req.params.code},(err,result)=>{
+    await studyMaterial.find({ code: req.params.code }, (err, result) => {
         console.log(result)
         res.send(result)
     })
 });
 
-app.post("/studyMaterial",pdfUpload.fields([
+app.post("/studyMaterial", pdfUpload.fields([
     {
-        name:"file1",maxCount:1
+        name: "file1", maxCount: 1
     },
     {
-        name:"file2",maxCount:1
+        name: "file2", maxCount: 1
     },
     {
-        name:"file3",maxCount:1
+        name: "file3", maxCount: 1
     },
     {
-        name:"file4",maxCount:1
+        name: "file4", maxCount: 1
     },
     {
-        name:"file5",maxCount:1
+        name: "file5", maxCount: 1
     },
     {
-        name:"file6",maxCount:1
+        name: "file6", maxCount: 1
     },
-]) , 
-(req,res)=>{
-    console.log(req.body)
+]),
+    async (req, res) => {
 
-    const { code,sub1,sub2,sub3,sub4,sub5,sub6} = req.body;
-    console.log(code,sub1,sub2,sub3,sub4,sub5,sub6)
+        const { code, sub1, sub2, sub3, sub4, sub5, sub6 } = req.body;
 
-    // to delete the previously uploaded file before updating the file
-        studyMaterial.find({code:code},(err,result)=>{
+        // to delete the previously uploaded file before updating the file
+        await studyMaterial.find({ code: code }, (err, result) => {
             const addressArray = [];
             addressArray.push(result[0].subjects.sub1.materials.pdf);
             addressArray.push(result[0].subjects.sub2.materials.pdf);
@@ -399,81 +464,104 @@ app.post("/studyMaterial",pdfUpload.fields([
             addressArray.push(result[0].subjects.sub4.materials.pdf);
             addressArray.push(result[0].subjects.sub5.materials.pdf);
             addressArray.push(result[0].subjects.sub6.materials.pdf);
-            console.log("arr",addressArray);
-            addressArray.map((e)=>{
-                if(e && req.files != null){
-                        return(
-                        
-                            fs.unlink(e,(err)=>{
-                                if(err){
-                                    console.log(err)
-                                }else{
-                                    console.log("deleted");
-                                }
-                            })
-                        )
-                    }
+            console.log("arr", addressArray);
+            addressArray.map((e) => {
+                if (e && req.files != null) {
+                    return (
 
-                
-    
+                        fs.unlink(e, (err) => {
+                            if (err) {
+                                console.log(err)
+                            } else {
+                                console.log("deleted");
+                            }
+                        })
+                    )
+                }
+
+
+
             })
             console.log(result)
-    
-            
+
+
         })
 
-   studyMaterial.updateOne({code:code},{
-        code: code,
-        subjects: {
-          sub1:{
-              value:sub1,
-              materials:{
-                notes:"String",
-                pdf:req.files.file1 != undefined ? req.files.file1[0].path : null
-              }
-          },
-          sub2:{
-              value:sub2,
-              materials:{
-                notes:"String",
-                pdf:req.files.file2 != undefined ? req.files.file2[0].path : null
-              }
-          },
-          sub3:{
-              value:sub3,
-              materials:{
-                notes:"String",
-                pdf:req.files.file3 != undefined ? req.files.file3[0].path : null
-              }
-          },
-          sub4:{
-              value:sub4,
-              materials:{
-                notes:"String",
-                pdf:req.files.file4 != undefined ? req.files.file4[0].path : null
-              }
-          },
-          sub5:{
-              value:sub5,
-              materials:{
-                notes:"String",
-                pdf:req.files.file5 != undefined ? req.files.file5[0].path : null
-              }
-          },
-          sub6:{
-              value:sub6,
-              materials:{
-                notes:"String",
-                pdf:req.files.file6 != undefined ? req.files.file6[0].path : null
-              }
-          }
-      }
-      } ,(err,response)=>{
-          if(err){
-              console.log(err)
-          }else{
-              console.log("updated one");
-              res.send({status:"updated"});
-          }
-      });
+        await studyMaterial.updateOne({ code: code }, {
+            code: code,
+            subjects: {
+                sub1: {
+                    value: sub1,
+                    materials: {
+                        notes: "String",
+                        pdf: req.files.file1 != undefined ? req.files.file1[0].path : null
+                    }
+                },
+                sub2: {
+                    value: sub2,
+                    materials: {
+                        notes: "String",
+                        pdf: req.files.file2 != undefined ? req.files.file2[0].path : null
+                    }
+                },
+                sub3: {
+                    value: sub3,
+                    materials: {
+                        notes: "String",
+                        pdf: req.files.file3 != undefined ? req.files.file3[0].path : null
+                    }
+                },
+                sub4: {
+                    value: sub4,
+                    materials: {
+                        notes: "String",
+                        pdf: req.files.file4 != undefined ? req.files.file4[0].path : null
+                    }
+                },
+                sub5: {
+                    value: sub5,
+                    materials: {
+                        notes: "String",
+                        pdf: req.files.file5 != undefined ? req.files.file5[0].path : null
+                    }
+                },
+                sub6: {
+                    value: sub6,
+                    materials: {
+                        notes: "String",
+                        pdf: req.files.file6 != undefined ? req.files.file6[0].path : null
+                    }
+                }
+            }
+        }, (err, response) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log("updated one");
+                res.send({ status: "updated" });
+            }
+        });
+    });
+
+app.post("/contact", async (req, res) => {
+    console.log(req.body)
+    const { firstname, lastname, email, number, subject } = req.body;
+
+    const CONTACT = new contactus({
+        firstname: firstname,
+        lastname: lastname,
+        Email: email,
+        Phone: number,
+        description: subject,
+
+    });
+
+    CONTACT.save((err, doc) => {
+        if (err)
+            res.send(false);
+        else
+            res.send(true);
+    });
+    
+
 });

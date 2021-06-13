@@ -24,6 +24,7 @@ import {ModalState} from "../Post/Post";
 import logo from '../../Images/collegMentor.png'
 import axios from 'axios';
 import List from "../List/List";
+import { MyContext } from '../../App';
 
 
 function Header(props) {
@@ -38,6 +39,7 @@ function Header(props) {
   const [isSearchEmpty,setIsSearchEmpty] = useState(false);
   const history = useHistory();
 
+  const {allUser,dispatch,updateUser} = useContext(MyContext) ///using the context
 
   function OpenModal(){
       setIsModal(true); 
@@ -49,7 +51,7 @@ function Header(props) {
   }
 
  async function end(){
-    const logOutStatus = await axios.post("http://localhost:8080/logout");
+    const logOutStatus = await axios.post(`${process.env.REACT_APP_BASE_URL}/logout`);
     console.log(logOutStatus)
     if(logOutStatus.data.logOut == true){
       history.push("/login");
@@ -58,23 +60,35 @@ function Header(props) {
   }
 
   async function userDetail(){                                                                            //to get user details
-    const userDetails = await axios.get("http://localhost:8080/userDetail");
-    console.log("userDatials",userDetails);
+    const userDetails = await axios.get(`${process.env.REACT_APP_BASE_URL}/userDetail`);
     props.details(userDetails)                                                                            //calling function written in app.js
     setAllUserDetails(userDetails);
+    dispatch({type:"userDetails",value:userDetails});
+  }
+  if(updateUser){
+    userDetail();
+    dispatch({type:"update"});
   }
 
  async function searchHandler(event){
-    console.log(event.target.value);
     const value = event.target.value;
     if(value){
       setIsSearchEmpty(true)
+      //to check enter is pressed in the search bar
+      if(event.keyCode == 13){
+        console.log("enter")
+        dispatch({type:"search",value:searchQueryResult})
+        props.onChange("search");
+        setIsSearchEmpty(false)
+
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/keyword`,{value:value});
+      }
     }else{
+      console.log("false")
       setIsSearchEmpty(false)
     }
-   const all =  await axios.post("http://localhost:8080/all",{value:value});
-   setSearchQueryResult(all)
-  console.log(all)
+    const all =  await axios.post(`${process.env.REACT_APP_BASE_URL}/all`,{value:value});
+    setSearchQueryResult(all)
   }
 
 function postRender(){
@@ -110,7 +124,7 @@ function postRender(){
                   }}>
                   <BusinessCenterRoundedIcon fontSize="large" style={{color: user_active  ? "blue" : null}}/>
                 </IconButton>
-                <span class="tooltiptext">User-list</span>
+                <span class="tooltiptext">Materials</span>
               </div>
                 </div>
                 <div className="header_icon">
@@ -125,7 +139,7 @@ function postRender(){
                   }} >
                   <PeopleAltRoundedIcon fontSize="large" style={{color: member_active  ? "blue" : null}} />
                   </IconButton>
-                  <span class="tooltiptext">Members</span>
+                  <span class="tooltiptext">UserForm</span>
                 </div>
                 </div>
                 <div className="header_icon">
@@ -166,7 +180,7 @@ function postRender(){
     return(
       <div className="header_right">
       <div className="header_profile">
-        <IconButton onClick={()=>{props.onChange('profile')}}>
+        <IconButton onClick={()=>{dispatch({type:"profile",value:allUserDetails})}}>
           <Avatar src="https://tse1.mm.bing.net/th?id=OIP.6nCVjA0S936UiBlDUsov4QHaE9&pid=Api&P=0&w=245&h=165"  ></Avatar>
         </IconButton>
         <p style={{color:"black" , fontSize:"24px"}}>{allUserDetails ? allUserDetails.data.username : "none"}</p>
@@ -219,10 +233,9 @@ function postRender(){
                 id="outlined-textarea"
                 label="Seacrh.."
                 placeholder="Your Fav?"
-                multiline
                 variant="outlined"
                 size="small"
-                onChange={searchHandler}
+                onKeyUp={searchHandler}
               />
               </div>
             <div className="search_list">
@@ -242,14 +255,10 @@ function postRender(){
     mainHeader();
   },[]);
   
-  useEffect(()=>{
-    mainHeader();
-  },[allUserDetails]);
   
     return (
         <>
-          {
-            
+          {            
             mainHeader()
           }
         </>

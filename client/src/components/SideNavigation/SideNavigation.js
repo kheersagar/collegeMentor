@@ -13,15 +13,6 @@ function SideNavigation(props) {
         <>
         
           <div className="side_nav">
-            <div className="user_profile">
-              <div>
-                <Avatar/>
-              </div>
-              <div className="side_nav_icon_name">
-              {/* getting user details through props.details */}
-                {props.details ? props.details.data.username : null}                                   
-              </div>
-            </div>
             <div className="friends">
               <div>
                 <GroupRoundedIcon fontSize="large" color="primary"/>

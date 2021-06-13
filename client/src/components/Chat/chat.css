@@ -1,0 +1,122 @@
+.chatbox{
+  background-color: white;
+  /* border: 1px solid; */
+  /* padding: 10px; */
+  box-shadow: 0px -10px 20px #888888;
+  border-bottom: none;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  width: 30%;
+  position: fixed;
+  bottom: 0%;
+  margin-left: 5%;
+  /* padding-bottom: 2%; */
+  z-index: 100;
+}
+.title, .profile{
+  display: inline-block;
+  width: auto;
+}
+.chatbox hr{
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.title span{
+  font-family:sans-serif;
+  display: inline-block;
+  /* margin: auto; */
+  font-size: 1.7rem;
+  padding-left: 2rem;
+}
+.profile{
+  display: inline-block;
+  width: 8%;
+  transform: translate(12px,7px);
+}
+.input-div{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.send__button{
+  position: absolute;
+  top: -18%;
+  right: 4%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+}
+.text-input{
+  margin: 0.5rem;
+  max-width: 80%;
+  font-size: 1.5rem;
+  border-radius: 5rem;
+  border: none;
+  outline: none;
+  padding: 2px 20px;
+  background-color: #f2f2f2;
+  
+}
+.up-btn{
+  position: absolute;
+  right: 0;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+.message__ul{
+  max-height: 16rem;
+  overflow-y: scroll;
+}
+.message__li{
+  list-style: none;
+  width: 40%;
+  height: max-content;
+  background-color: #365ff5;
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+  padding: 10px 5px;
+  border-radius: 8px;
+  color: white;
+  overflow-wrap: break-word;
+}
+.sender__message{
+  position: relative;
+  left: 50%;
+  border-radius: 10px;
+  border-bottom-right-radius: 0px;
+}
+
+.receiver__message{
+  position: relative;
+}
+.chat_close{
+  position: absolute;
+  top: -23px;
+  right: 50px;
+}
+.receiver__message{
+  border-radius: 10px;
+  border-bottom-left-radius: 0px;
+}
+.content_chat{
+  padding: 10px 20px;
+}
+@media(max-width:1024px){
+  .chatbox{
+    width: 50%;
+  }
+}
+@media(max-width:640px){
+  .chatbox{
+    width: 60%;
+  }
+}
+@media(max-width:420px){
+  .chatbox{
+    width: 90%;
+  }
+}

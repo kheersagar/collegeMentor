@@ -1,0 +1,18 @@
+.search__header__main{
+  position: fixed;
+  top: 12vh;
+  left: 50%;
+  margin-left: -25%;
+}
+@media(max-width:1024px){
+  .search__header__main{
+    width: 100%;
+    left: 0%;
+    margin: 2rem;
+  }
+}
+@media(max-width:640px){
+  .search__header__main{
+    margin: 0%;
+  }
+}

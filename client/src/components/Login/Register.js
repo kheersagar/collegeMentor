@@ -12,6 +12,7 @@ import FaceIcon from '@material-ui/icons/Face';
 
 function Register(props) {
   const [show, setShow] = useState(false);
+  const [isRegistered,setIsRegistered ] = useState();
 
   const SignupSchema = Yup.object().shape({
     username: Yup.string()
@@ -27,9 +28,9 @@ function Register(props) {
   const formSubmit = async (values) => {
     console.log(values.username, values.email, values.password);
     try {
-      axios.request({
+     const status = await axios.request({
         method: 'POST',
-        url: `http://localhost:8080/register`,
+        url: `${process.env.REACT_APP_BASE_URL}/register`,
         headers: {
           'Content-Type' : 'application/json'
         },
@@ -39,6 +40,12 @@ function Register(props) {
           password: `${values.password}`
         }
       })
+      console.log(status);
+      setIsRegistered(status.data.status);
+        if(status.data.status ){
+          props.userHandler("successfully registered");
+        }
+
     }
     catch (e) {
       console.log(e);
@@ -111,24 +118,21 @@ function Register(props) {
                   ) : null}
                   </div>
                   <div>
-                  <Button onClick={() => { setShow(!show) }} value={"👁️"} className="view_button"></Button>
+                  <Button onClick={() => { setShow(!show) }} value={"👁️"} className="view_button" type="button"></Button>
                   </div>
                 </div>
               </div>
-
+              <div style={{display:"flex"}}>
               <div>
                 <Button type="submit" value="Register" className="Register_button" />
               </div>
+              <div>
+                <Button type="button" value="Sign In" className="create_account_button" onClick={()=> props.userHandler("login")}/>
+              </div> 
+              </div>      
             </Form>
           )}
         </Formik>
-
-        <div className="button">
-
-          <div style={{width:"70px"}}>
-            <Button value="Sign In" className="create_account_button" onClick={()=> props.userHandler("login")}/>
-          </div>
-        </div>
 
       </div>
     </>

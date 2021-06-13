@@ -1,0 +1,164 @@
+
+.wrapper {
+  max-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e0e0;
+  position: relative;
+}
+
+.form-wrapper {
+  max-width: 544px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px #555;
+  background-color: #ffffff;  
+  position: absolute;
+  top: 12vh;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h1 {
+  text-align: center;
+  width: 100%;
+  color: #111;
+  font-weight: lighter;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    margin-bottom: 9px;
+    margin-top: 4px;
+}
+
+label {
+  font-size: 1.0em;
+  margin-bottom: 0.25em;
+  color: #222;
+  font-weight: lighter;
+  padding-left: 7px;
+}
+
+input {
+  padding: 10px 10px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #cfcfcf;
+}
+
+input::placeholder {
+  font-size: 1.0em;
+  font-weight: lighter;
+  color: #999;
+}
+
+
+
+.firstName {
+  margin-right: 2%;
+}
+
+.lastName {
+  margin-left: 2%;
+}
+
+.email{
+  margin-right: 2%;
+}
+.interest{
+  margin-left: 2%;
+}
+.Contact{
+margin-right: 2%;
+}
+.location{
+ margin-left: 2%;
+}
+
+.firstName,
+.lastName,
+.email,
+.interest,
+.Contact,
+.location,
+.About
+
+ {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.firstName,
+.lastName {
+  width: 47%;
+}
+.About{
+  width: 100%;
+}
+
+.email,
+.interest {
+  width: 48%;
+}
+.Contact,
+.location{
+  width: 48%;
+}
+
+.createAccount {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.createAccount button {
+  background-color: #519e8a;
+  color: #fff;
+  border: 2px solid #fff;
+  width: 100%;
+  margin-top: 1em;
+  padding: 8px 0px;
+  font-size: 1em;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  margin-bottom: 0.25em;
+}
+
+.createAccount button:hover {
+  color: #519e8a;
+  background-color: #fff;
+  border: 2px solid #519e8a;
+}
+
+.createAccount small {
+  color: #999;
+  font-weight: lighter;
+}
+
+.About input{
+
+  padding: 10px 10px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #cfcfcf;
+  height: 90px;
+
+}
+@media(max-width:640px){
+  .form-wrapper{
+    max-width: 100%;
+    padding-bottom: 4rem;
+    top: 0%;
+  }
+}
+
+

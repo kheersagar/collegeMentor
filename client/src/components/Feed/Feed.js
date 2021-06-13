@@ -12,19 +12,21 @@ import "./Feed.css";
 
 
 function Feed(props) {
+  console.log(props)
     const [post,setPost] = useState([]);
-    const [feedUserDetails,setFeedUserDetails] = useState();
     const [descriptinHeight,setDescriptionHeight] = useState(false);
     async function renderPost(){
         try{
             const posts = await axios.request({
                 method:"GET",
-                url:"http://localhost:8080/allPost",
-                headers: { 'data': props.headers }
+                url:`${process.env.REACT_APP_BASE_URL}/allPost`,
+                headers: {
+                   'data': props.headers ,
+                    'id' : props.id
+                  }
             })
-            console.log(posts)
             const allPost = posts.data;
-            setPost(allPost);     
+            props.keyword == 'postSearch' ? setPost(props.value)   :  setPost(allPost)     
            }
            catch(e){
                console.log(e);
@@ -60,25 +62,26 @@ function Feed(props) {
   }
   useEffect(() => {
     renderPost()
-  }, [])
+  }, [props.id])
+
   if(props.post){
     renderPost();
   }
-  const currentTime = new Date().toLocaleTimeString();
+
+
   return (
-    <div className={`feed_container ${props.class1}`}>
+    <div className={`feed_container ${props.class1} ${props.class3}`} >
       {post.reverse().map((posts) => {
         return (
           <>
-
-            <div className={`feed_main ${props.class2}`}>
+            <div className={`feed_main ${props.class2}`} key={posts.timestamp + Math.random()}>
 
               <div className="feed_image">
-                <img src={`http://localhost:8080/${posts.image}`} width="100%" style={{ maxHeight: "700px", display: posts.image ? "block" : "none", borderRadius: "16px" }} />
+                <img src={`${process.env.REACT_APP_BASE_URL}/${posts.image}`} width="100%" style={{ maxHeight: "400px", display: posts.image ? "block" : "none", borderRadius: "16px" }} />
               </div>
               <div className="feed_title">{posts.Title}</div>
               <input type="checkbox" className="des_checkbox" id={posts._id}/>
-              <div className="feed_description" style={{ height: descriptinHeight }} onClick={()=>{heightHandlerd(posts._id)}}  key={posts._id}>{posts.Description}</div>
+              <div className="feed_description" style={{ height: descriptinHeight }} onClick={()=>{heightHandlerd(posts._id)}} >{posts.Description}</div>
               <div className="header_feed">
                 <div className="avatar">
                   <Avatar />

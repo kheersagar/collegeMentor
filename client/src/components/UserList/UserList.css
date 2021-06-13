@@ -1,0 +1,20 @@
+.userlist__main{
+  margin-bottom: 7px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px ;
+  border: 1px solid #edebf5;
+  box-shadow: rgba(25, 18, 63, 0.15) 0px 48px 100px 0px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 550;
+  color: #272626;
+  background-color:	#dbcffc;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.user_category{
+   padding: 5px 10px;
+}
+

@@ -10,10 +10,10 @@
   box-shadow: 3px 2px 2px  rgb(206, 206, 207);
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 500px;
+  margin-left: 30vw;
   padding-bottom: 20px;
-  min-width: 600px;
-  max-width: 700px;
+  min-width: 500px;
+  max-width: 500px;
   background: linear-gradient( #acace9, #f5e2e0);
 }
 
@@ -119,16 +119,29 @@
   font-weight: 520;
   margin: -10px;
 }
+.search_feed_container{
+  height: 75vh !important;
+  overflow-y: scroll;
+  top: 14vh;
+}
+.search_feed_class{
+  margin-left: 10% !important;
+}
 @media(max-width:640px){
   .feed_main{
     margin: 20px 0px 20px 0px;
     min-width: 100%;
+  }
+  .search_feed_container{
+    margin-left: -10% !important;
+    top: 0%;
+    padding: 2rem;
   }
 }
 .main{
   width: 100% !important;
 }
 .main2{
-  margin: 0% !important;
+  margin: 5% !important;
   min-width: 10px;
 }

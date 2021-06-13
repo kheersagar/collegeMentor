@@ -10,9 +10,6 @@
   height: 80vh;
   width:90vw;
   margin-bottom: 40px;
-  /* background-image: url("https://img.freepik.com/free-vector/flat-design-customer-support-concept-illustrated_52683-59570.jpg?size=626&ext=jpg&ga=GA1.2.1485417365.1614246784"); */
-  /* background-image: url("https://t3.ftcdn.net/jpg/02/29/48/10/240_F_229481085_tew6VKnAz3jsj8qcqMgzwg51B19koTxY.jpg"); */
-  /* background-image: url("https://t4.ftcdn.net/jpg/02/54/80/49/240_F_254804925_O2TICkoHF5YWGk36BHBlC6sgehzcLQbZ.jpg"); */
   background-image: url("https://t3.ftcdn.net/jpg/02/39/39/80/240_F_239398000_KYQOsvyjo9cIby7vCAjooMQTQ0qwsGT2.jpg");
   background-repeat: no-repeat;
   background-size: 100% 70%;
@@ -48,7 +45,7 @@ margin-left: -46%;
 }
 
 .column-2{
-  width: 500px;
+  max-width: 500px;
   position: relative;
   background-color: #242aac;
   flex: 1;
@@ -73,38 +70,33 @@ margin-left: -46%;
   
 }
 
-.col-50 > div >input{
-  font-size: 17px;
-  border: none;
-  border-bottom: 1px solid gray;
-  opacity: 0.8;
-  margin-left: 12px;
-  height: 100px;
-  outline: none;
-  width: 15vw;
-  max-width: 15vw;
-}
-
 .col-50 >input::placeholder{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.row-1 >textarea{
-  font-size: 1.1rem;
-  resize: none;
-  width: 100%;
-  height: 100px;
-  margin-top: 10px;
-  border: none;
-  border-bottom: 1px solid gray;
-  opacity: 0.7;
-  outline: none;
+.col-50 >div>.F_Name{
+  min-width: 220px;
+  margin-right: 40px;
+  background: transparent;
 }
 
-.row-1 >textarea::placeholder{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+.col-50 >div> .Em_address{
+  min-width: 220px;
+  position: relative;
+  top: 20px;
+}
+
+.col-50 >div> .Phone_No{
+  min-width: 220px;
+  top: 20px;
+  left: 40px;
+}
+
+
+.row-1 > .Sub_help{
+  min-width: 220px;
+  width: 31.5vw;
+  top: 60px;
 }
 
 .contact_heading{
@@ -125,6 +117,7 @@ margin-left: -46%;
   background-color: rgb(69, 66, 240);
   color: white;
   padding: 8px 28px;
+  outline: none;
 }
 
 .submit_button:hover{
@@ -187,4 +180,44 @@ margin-left: -46%;
     position:absolute;
    color: white;
    text-decoration: none;
+  }
+  @media(max-width:1024px){
+    .col-50>div>.F_Name{
+      margin-right: 0%;
+      margin-bottom: 20px;
+    }
+    .col-50 >div> .Phone_No{
+      left: 0%;
+    }
+    .row_main{
+      flex-direction: column;
+    }
+    .row_main{
+      min-height: 750px;
+    }
+    .column-1{
+      min-height: 300px;
+      border-radius: 10px;
+    }
+    .column-2{
+      border-radius: 10px;
+    }
+  }
+
+  @media(max-width:640px){
+    .row_main{
+      width: 90vw;
+      left: 0;
+      margin: 0;
+      top: 10vh;
+    }
+    .submit_button{
+      bottom: 0.1%;
+    }
+
+  }
+  @media(max-width:420px){
+    .col-50 >div> .Phone_No{
+      margin-top: 20px;
+    }
   }

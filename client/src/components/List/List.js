@@ -28,7 +28,7 @@ export default function ListDropDown(props) {
       props.value ? props.value.data.userSearchResult ? props.value.data.userSearchResult.map((result)=>{     //to check is there any value if not this was showing error
         return(
           <>
-          <ListItem alignItems="flex-start">
+          <ListItem alignItems="flex-start" key={result._id}>
         <ListItemAvatar>
           <Avatar alt={result.username.substring(0)} src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
@@ -59,12 +59,12 @@ export default function ListDropDown(props) {
       props.value ? props.value.data.postsSearchResult ? props.value.data.postsSearchResult.map((result)=>{
         return(
           <>
-          <ListItem alignItems="flex-start">
+          <ListItem alignItems="flex-start" key={result._id}>
         <ListItemAvatar>
           <Avatar alt={result.Title.substring(0)} src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
         <ListItemText
-          primary={result.Title}
+          primary={result.Title.substring(0,15)+".."}
           secondary={
             <React.Fragment>
               <Typography

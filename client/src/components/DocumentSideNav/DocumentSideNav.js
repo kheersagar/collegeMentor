@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import "./DocumentSideNav.css";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import PDFViewer from 'mgr-pdf-viewer-react';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -42,22 +45,23 @@ setIsMaterial({notes:notes,pdf:pdf});
   }
 
   return (
-    <div className={classes.root}>
+    <div className={`pdf_section {classes.root}`}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
         {console.log(props)}
-          <Paper className={classes.paper}>{props.subject.courseName}</Paper>
+          <Paper className={`Submate_section $ {classes.paper}`} style={{color:"#111111",boxShadow:"0 7px 6px -6px #777"}}>{props.subject.courseName? props.subject.courseName :"Click on your subject then get your PDF"}</Paper>
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>SUBJECTS</Paper>
+        <Grid item sm={6} xs={12}>
+          <Paper className={classes.paper} style={{boxShadow:"0 7px 6px -6px #777",color:"black"}}>SUBJECTS</Paper>
           <SubList />
        </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>MATERIALS</Paper>
+        <Grid item sm={6} xs={12}>
+          <Paper className={classes.paper} style={{boxShadow:"0 7px 6px -6px #777",color:"black"}}>MATERIALS</Paper>
           {
-            isMaterial.pdf ? <iframe src={"http://localhost:8080/"+isMaterial.pdf} width="300" height="300" /> :  null
+            isMaterial.pdf ?<PDFViewer document={{url: `${process.env.REACT_APP_BASE_URL}/${isMaterial.pdf}`}}/>:  null
           }
         </Grid>
+        {isMaterial.pdf ? <a href={`${process.env.REACT_APP_HOST}${isMaterial.pdf}`} download="My_File.pdf" target="_blank" className="download"> Download Here </a> : null}
       </Grid>
     </div>
   );

@@ -4,7 +4,8 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function StudyForm() {
   const [file,setFile] = useState();
@@ -13,9 +14,11 @@ function StudyForm() {
   const [file4,setFile4] = useState();
   const [file5,setFile5] = useState();
   const [file6,setFile6] = useState();
-
+  const [alert,setAlert] = useState(false);
+  const [isProgress,setIsProgress] = useState(false);
 
   async function formSubmit(values){
+    setIsProgress(true);
     try{
     const formData = new FormData(); 
     formData.append("code",values.code);
@@ -32,8 +35,14 @@ function StudyForm() {
     formData.append('file5',file5);
     formData.append('file6',file6);
 
-    const res = await axios.post("http://localhost:8080/studyMaterial",formData);
-    console.log(res)
+    const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/studyMaterial`,formData);
+    if(res.data.status == "updated"){
+      setIsProgress(false);
+      setAlert(true);
+      setTimeout(()=>{
+        setAlert(false);
+      },3000);
+    }
     }catch(e){
       console.log(e)
     }
@@ -72,6 +81,7 @@ function StudyForm() {
         <Form >
        
           <div className="study_form_main">
+          <MuiAlert elevation={6} variant="filled"  style={{position:"fixed",top:"12vh",zIndex:"1000",display: alert ? "flex" : "none"}}> successfully Registered</MuiAlert>
             <div className="study_form_main_heading">
               Study informmation
             </div>
@@ -165,7 +175,7 @@ function StudyForm() {
                       </div>
                   </div>    
             </div>
-            <button type="submit" className="form_submit">submit</button>
+            <button type="submit" className="form_submit" > {isProgress ? <CircularProgress size={20} thickness={4} color="secondary" /> : "submit"}</button>
           </div>
          
         </Form>

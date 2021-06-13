@@ -8,6 +8,7 @@ import Button from "../Button/Button";
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+
 import {BrowserRouter as Router, Redirect, Switch,Route,useHistory} from "react-router-dom";
 
 function Login(props) {
@@ -28,7 +29,7 @@ axios.defaults.withCredentials= true;
     try {
       const loginState = await axios.request({
         method: 'POST',
-        url: `http://localhost:8080/login`,
+        url: `${process.env.REACT_APP_BASE_URL}/login`,
         headers: {
           'Content-Type': 'application/json'
         },
@@ -53,6 +54,7 @@ axios.defaults.withCredentials= true;
     <>
 
       <div className="auth_details">
+      
         <div className="textANI three">
         <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span><br/><span>B</span><span>a</span><span>c</span><span>k</span>
         </div>
@@ -98,20 +100,18 @@ axios.defaults.withCredentials= true;
                   {/* <Button onClick={() => { setShow(!show) }} value={"view"}></Button> */}
                 </div>
               </div>
-              <div>
-                <Button type="submit" value="Login" className="login_button" />
+              <div style={{display:"flex"}}>
+                <div>
+                  <Button type="submit" value="Login" className="login_button" />
+                </div>
+                <div>
+                  <Button type="button" value="Create Account" className="create_account_button" onClick={()=> props.userHandler("register")}/>
+                </div>
               </div>
 
             </Form>
           )}
         </Formik>
-
-        <div className="button">
-
-          <div>
-            <Button value="Create Account" className="create_account_button" onClick={()=> props.userHandler("register")}/>
-          </div>
-        </div>
 
       </div>
     </>

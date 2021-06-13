@@ -61,3 +61,11 @@
   font-size: 1.2rem;
   font-family: 500;
 }
+@media(max-width:640px){
+  .study_form_main{
+    top: 0%;
+    margin: 0%;
+    left: 0%;
+    width: 100%;
+  }
+}

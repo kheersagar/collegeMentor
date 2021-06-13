@@ -1,0 +1,38 @@
+.pdf_section{
+    margin-top: 12px;
+    padding: 0 20px;
+    height: 40rem;
+    background: linear-gradient(to bottom,#FAFAFA,#effafa, #fdfdfd);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 550;
+    height: 100%;
+    
+}
+
+.Submate_section{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    padding: 15px 0;
+}
+canvas{
+    margin-top: 20px;
+    width: 250px !important;
+    height: 400px !important;
+}
+.download{
+    text-decoration: none;
+    color: black;
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 6px 10px;
+    max-height: 40px;
+}
+.download:hover{
+    opacity: 0.5;
+}
+@media(max-width:640px){
+    .pdf_section{
+        padding: 2rem 0 5rem 0;
+    }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import "./ControlledAccordion.css"
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -8,6 +9,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
 import ImgMediaCard from "../Card/ImgMediaCard";
 import axios from 'axios';
+import { LinearProgress } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,6 +41,8 @@ export default function ControlledAccordions(props) {
   const years=[
     {
     value:"First year",
+    Quote_1:"I am a Fresher",
+    Quote_2:"I am a Fresher",
     sem1:"First Semester",
     sem2:"Second Semester",
     sem1_subject:[
@@ -56,6 +60,8 @@ export default function ControlledAccordions(props) {
     },
       {
     value:"Second year",
+    Quote_1:"I am Excited",
+    Quote_2:"I am Excited",
     sem1:"Third Semester",
     sem2:"fourth Semester",
     sem1_subject:[
@@ -113,6 +119,8 @@ export default function ControlledAccordions(props) {
     },
       {
     value:"Third year",
+    Quote_1:"I am a Professional",
+    Quote_2:"I am a Professional",
     sem1:"Fifth Semester",
     sem2:"Sixth Semester",
     sem1_subject:[
@@ -170,6 +178,8 @@ export default function ControlledAccordions(props) {
     },
       {
     value:"Fourth year",
+    Quote_1:"Placement",
+    Quote_2:"Placement",
     sem1:"Seventh Semester",
     sem2:"Eigth Semester",
     sem1_subject:[
@@ -233,24 +243,24 @@ export default function ControlledAccordions(props) {
       return(
         <>
 
-        <Accordion  onChange={handleChange('panel1')} defaultExpanded={true} style={{backgroundColor:"#67bf4b"}}>
+        <Accordion  onChange={handleChange('panel1')} defaultExpanded={true} style={{backgroundColor:"#ba81ee"}}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1bh-content"
             id="panel1bh-header"
           >
-            <Typography className={classes.heading}  style={{fontFamily:'Merriweather',fontWeight:"500",fontSize:"1.2rem"}}>{event.value}</Typography>
-            <Typography className={classes.secondaryHeading}>I am a Fresher</Typography>
+            <Typography className={`Year_section $ {classes.heading}`} style={{fontSize:"1.3rem",fontFamily:"'Ultra', serif"}}>{event.value}</Typography>
+            <Typography className={`Fresher_sec $ {classes.secondaryHeading}`} style={{fontSize:"1.1rem",fontFamily:"'Volkhov', serif"}}>{/*I am a Fresher*/}</Typography>
           </AccordionSummary>
         {/* nested accordion */}
-            <Accordion  onChange={handleChange(event.sem1)} expanded={expanded === event.sem1} style={{backgroundColor:"#5ed0e2",margin:"2%"}}>
+            <Accordion  onChange={handleChange(event.sem1)} expanded={expanded === event.sem1} style={{backgroundColor:"#EEF0FF",margin:"2%"}}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
               >
-                <Typography className={classes.heading}>{event.sem1}</Typography>
-                <Typography className={classes.secondaryHeading}>I am a Fresher</Typography>
+                <Typography className={classes.heading} style={{fontFamily:"'Old Standard TT', serif",fontSize:"1.2rem"}}>{event.sem1}</Typography>
+                <Typography className={classes.secondaryHeading} style={{fontFamily:"'Volkhov', serif", fontSize:"1.1rem",color:"black"}}>{event.Quote_1}</Typography>
               </AccordionSummary>
                 <AccordionDetails>
                         <Grid container item sm={12} spacing={3}>
@@ -267,14 +277,14 @@ export default function ControlledAccordions(props) {
               </AccordionDetails>
             </Accordion>
             {/* second nested accodion */}
-            <Accordion  onChange={handleChange(event.sem2)} expanded={expanded === event.sem2} style={{backgroundColor:"rgb(168 216 224)",margin:"2%"}} >
+            <Accordion  onChange={handleChange(event.sem2)} expanded={expanded === event.sem2} style={{backgroundColor:"#DCE0FD",margin:"2%"}} >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
               >
-                <Typography className={classes.heading}>{event.sem2}</Typography>
-                <Typography className={classes.secondaryHeading}>I am a Fresher</Typography>
+                <Typography className={classes.heading} style={{fontFamily:"'Old Standard TT', serif",fontSize:"1.2rem"}}>{event.sem2}</Typography>
+                <Typography className={classes.secondaryHeading}style={{fontFamily:"'Volkhov', serif", fontSize:"1.1rem", color:"black"}}>{event.Quote_2}</Typography>
               </AccordionSummary>
                 <AccordionDetails>
                   <Grid container item sm={12} spacing={3}>
