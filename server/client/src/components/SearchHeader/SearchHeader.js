@@ -9,6 +9,8 @@ import PersonPinIcon from '@material-ui/icons/PersonPin';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 import "./SearchHeader.css";
 import UserList from '../UserList/UserList';
@@ -88,16 +90,17 @@ function SearchHeader(props) {
           <Tab label="New" icon={<SupervisedUserCircleIcon />} {...a11yProps(3)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0}  style={{textAlign:"center"}}>
       <div style={{maxHeight:"70vh",overflowY:"scroll"}}>
-      {result.data.userSearchResult.map((res)=>{
+      { result ? result.data.userSearchResult.map((res)=>{
         return(
           <UserList name={res.username} key={res._id} allDetails={res}/>
         )
-      })}
+      }) : <CircularProgress size={20} thickness={4} color="secondary"/>}
+
       </div>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={1} style={{textAlign:"center"}}>
         <Feed class2="search_feed_class" class3="search_feed_container" keyword='postSearch' value = {props.result && props.result.data.postsSearchResult && props.result.data.postsSearchResult} />
       </TabPanel>
       <TabPanel value={value} index={2}>

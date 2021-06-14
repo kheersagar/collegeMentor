@@ -122,6 +122,7 @@
   height: 75vh !important;
   overflow-y: scroll;
   top: 14vh;
+  margin-left: -25%;
 }
 .search_feed_class{
   margin-left: 10% !important;
