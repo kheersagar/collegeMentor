@@ -36,6 +36,9 @@
   left: 50%;
 
 }
+::-webkit-scrollbar {
+  display: none;
+}
 @media(max-width:640px){
   .home_body{
     background-color: white;

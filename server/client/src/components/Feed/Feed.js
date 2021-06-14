@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import Button from '../Button/Button';
 import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import MobileScreenShareOutlinedIcon from '@material-ui/icons/MobileScreenShareOutlined';
-import LanguageIcon from '@material-ui/icons/Language';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+
 import "./Feed.css";
 
 
@@ -71,7 +69,7 @@ function Feed(props) {
 
   return (
     <div className={`feed_container ${props.class1} ${props.class3}`} >
-      {post.reverse().map((posts) => {
+      {post ? post.reverse().map((posts) => {
         return (
           <>
             <div className={`feed_main ${props.class2}`} key={posts.timestamp + Math.random()}>
@@ -92,16 +90,15 @@ function Feed(props) {
                 </div>
                 <div className="feed_footer">
                   <div className="like"><ThumbUpAltOutlinedIcon fontSize="medium" /> <span className="footer_icon_name"></span></div>
-                  <div className="comment"><ChatBubbleOutlineIcon fontSize="medium" /><span className="footer_icon_name"></span></div>
+                  {/* <div className="comment"><ChatBubbleOutlineIcon fontSize="medium" /><span className="footer_icon_name"></span></div> */}
                 </div>
               </div>
             </div>
           </>
         )
-      })}
+      }) : <CircularProgress size={20} thickness={4} color="secondary" style={{textAlign:"center"}}/>}
     </div>
   );
-{/* <LanguageIcon style={{ fontSize: "24px", color: "#4a47a3", paddingTop: "7px" }} /> */}
 }
 
 export default Feed;

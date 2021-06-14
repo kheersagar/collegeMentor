@@ -19,14 +19,13 @@ function Recommend(props){
     });
     let ids = rec.map(o => o._id)
     filtered = rec.filter(({_id}, index) => !ids.includes(_id, index + 1))   //remove duplicates objects from array
-    console.log(filtered)
     setRecommendation(filtered);
   },[]);
     
     return (
 
         <div>
-            <fieldset className="Recommendation_box">
+            <fieldset className="Recommendation_box" style={{display: recommendation? window.innerWidth > "640px" ? "block" :null :"none"}}>
                 <legend className="R_Name">Recommendation</legend>
                 {recommendation ? recommendation.map((e)=>{
                   return(

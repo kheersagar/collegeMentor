@@ -1,0 +1,13 @@
+.li_search_list{
+  border-radius: 8px;
+}
+.ul_search_list{
+  box-shadow: 2px 2px 5px #dedede;
+  border-radius: 10px;
+}
+.li_search_list:hover{
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+  transform: translate3d(0px, -5px, 0px) !important;
+  transition: all 0.5s ease !important;
+}
