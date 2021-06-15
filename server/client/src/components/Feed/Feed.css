@@ -3,6 +3,8 @@
   top: 10vh;
   left: 50%;
   margin-left: -50%;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 .feed_main{
   border-radius: 16px;
@@ -11,8 +13,7 @@
   margin-bottom: 20px;
   margin-left: 30vw;
   padding-bottom: 20px;
-  min-width: 300px;
-  max-width: 400px;
+  width: 400px;
   background: linear-gradient( #acace9, #f5e2e0);
 }
 
@@ -127,15 +128,23 @@
 .search_feed_class{
   margin-left: 10% !important;
 }
+.feed_loading{
+  position: relative;
+  left: 50%;
+  margin-left: 13vw;
+}
 @media(max-width:640px){
   .feed_main{
     margin: 20px 0px 20px 0px;
-    min-width: 90%;
+    max-width: 100%;
   }
   .search_feed_container{
     margin-left: -10% !important;
     top: 0%;
     padding: 2rem;
+  }
+  .feed_loading{
+    margin-left: 0vw;
   }
 }
 .main{

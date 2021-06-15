@@ -218,6 +218,11 @@ app.post("/create-post", fileUpload.single('image'), async function (req, res) {
 
 app.get("/allPost", async function (req, res) {
     const check = req.headers.data;
+    const page = parseInt(req.headers.page) ;
+    const limit = parseInt(req.headers.limit);
+    const skipIndex = (page - 1) * limit;
+    console.log("page",page);
+    console.log("limit",limit);
     if (check == "userProfileData") {
         Post.find({ userId: req.headers.id }).populate('userId').exec((err, posts) => {
             if (err) {
@@ -227,7 +232,11 @@ app.get("/allPost", async function (req, res) {
             }
         })
     } else {
-        Post.find().populate('userId').exec((err, posts) => {
+        Post.find().populate('userId').
+        limit(limit)
+        .skip(skipIndex)
+        .sort({"timestamp":-1})
+        .exec((err, posts) => {
             if (err) {
                 console.log(err);
             } else {

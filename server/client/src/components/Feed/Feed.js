@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
@@ -10,9 +9,10 @@ import "./Feed.css";
 
 
 function Feed(props) {
-  console.log(props)
     const [post,setPost] = useState([]);
     const [descriptinHeight,setDescriptionHeight] = useState(false);
+    const [loading,setLoading] = useState(false);
+    const [page,setPage] = useState(1);
     async function renderPost(){
         try{
             const posts = await axios.request({
@@ -20,11 +20,21 @@ function Feed(props) {
                 url:`/allPost`,
                 headers: {
                    'data': props.headers ,
-                    'id' : props.id
+                    'id' : props.id,
+                    'page':page,
+                    'limit':5
                   }
             })
             const allPost = posts.data;
-            props.keyword == 'postSearch' ? setPost(props.value)   :  setPost(allPost)     
+            if(allPost) 
+              setLoading(false);
+            if(props.keyword == 'postSearch' ){
+              setPost(props.value)
+            }else if(props.post != true){
+              setPost(prev =>{ return [...new Set([...prev,allPost])]})
+            }else{
+              setPost(allprev =>{ return [...new Set([allPost])]})                
+            }
            }
            catch(e){
                console.log(e);
@@ -65,13 +75,29 @@ function Feed(props) {
   if(props.post){
     renderPost();
   }
+function handleScroll(e){
+  var bottom = e.target.scrollHeight - e.target.scrollTop == e.target.clientHeight;
+  if (bottom) {  
+    setLoading(true);
+    setPage((prev)=> prev+1)
+   if(page!=1){
+     setPage(1);
+     renderPost();
+   }
+    bottom = false;
+    console.log("pagination called");
+   }
 
+}
 
   return (
-    <div className={`feed_container ${props.class1} ${props.class3}`} >
-      {post ? post.reverse().map((posts) => {
+    <div className={`feed_container ${props.class1} ${props.class3}`} onScroll={(e)=>{handleScroll(e)}}>
+    {console.log(post)}
+      {post ? post.map((posts) => {
         return (
-          <>
+          posts.map((posts)=>{
+            return(
+              <>
             <div className={`feed_main ${props.class2}`} key={posts.timestamp + Math.random()}>
 
               <div className="feed_image">
@@ -95,8 +121,12 @@ function Feed(props) {
               </div>
             </div>
           </>
+            )
+          })
+          
         )
-      }) : <CircularProgress size={20} thickness={4} color="secondary" style={{textAlign:"center"}}/>}
+      }) : <CircularProgress size={20} thickness={4} color="secondary" className="feed_loading" />}
+      {!loading ? <CircularProgress size={20} thickness={4} color="secondary" className="feed_loading"/>: null}
     </div>
   );
 }
