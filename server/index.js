@@ -224,14 +224,26 @@ app.get("/allPost", async function (req, res) {
     console.log("page",page);
     console.log("limit",limit);
     if (check == "userProfileData") {
-        Post.find({ userId: req.headers.id }).populate('userId').exec((err, posts) => {
+        Post.find({ userId: req.headers.id })        
+        .limit(limit)
+        .skip(skipIndex)
+        .sort({"timestamp":-1})
+        .populate('userId')
+        .exec((err, posts) => {
             if (err) {
                 console.log(err);
             } else {
                 res.send(posts);
             }
         })
-    } else {
+    }
+    else if(req.headers.postSearch){
+        await Post.find({ Title: { $regex: req.headers.postSearch, $options: "i" } }, (err, postResult) => {
+            posts = postResult;
+            res.send(posts);
+        });
+    } 
+    else {
         Post.find().populate('userId').
         limit(limit)
         .skip(skipIndex)

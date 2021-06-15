@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
@@ -6,6 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 import "./Feed.css";
+import { MyContext } from '../../App';
 
 
 function Feed(props) {
@@ -13,6 +14,9 @@ function Feed(props) {
     const [descriptinHeight,setDescriptionHeight] = useState(false);
     const [loading,setLoading] = useState(false);
     const [page,setPage] = useState(1);
+
+    const {postSearch} = useContext(MyContext);
+    console.log("postSearch",postSearch);
     async function renderPost(){
         try{
             const posts = await axios.request({
@@ -21,6 +25,7 @@ function Feed(props) {
                 headers: {
                    'data': props.headers ,
                     'id' : props.id,
+                    'postSearch':postSearch,
                     'page':page,
                     'limit':5
                   }
@@ -28,9 +33,8 @@ function Feed(props) {
             const allPost = posts.data;
             if(allPost) 
               setLoading(false);
-            if(props.keyword == 'postSearch' ){
-              setPost(props.value)
-            }else if(props.post != true){
+
+            if(props.post != true){
               setPost(prev =>{ return [...new Set([...prev,allPost])]})
             }else{
               setPost(allprev =>{ return [...new Set([allPost])]})                
@@ -98,7 +102,7 @@ function handleScroll(e){
           posts.map((posts)=>{
             return(
               <>
-            <div className={`feed_main ${props.class2}`} key={posts.timestamp + Math.random()}>
+            <div className={`feed_main ${props.class2} ${props.size}`} key={posts.timestamp + Math.random()}>
 
               <div className="feed_image">
                 <img src={`/${posts.image}`} width="100%" style={{ maxHeight: "400px", display: posts.image ? "block" : "none", borderRadius: "16px" }} />

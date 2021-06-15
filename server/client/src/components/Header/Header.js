@@ -80,6 +80,7 @@ function Header(props) {
       if(event.keyCode == 13){
         console.log("enter")
         dispatch({type:"search",value:searchQueryResult})
+        dispatch({type:"postSearch",value:value});
         props.onChange("search");
         setIsSearchEmpty(false)
 
