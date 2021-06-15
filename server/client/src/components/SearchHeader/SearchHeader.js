@@ -101,7 +101,7 @@ function SearchHeader(props) {
       </div>
       </TabPanel>
       <TabPanel value={value} index={1} style={{textAlign:"center"}}>
-        <Feed class2="search_feed_class" class3="search_feed_container" keyword='postSearch' value = {props.result && props.result.data.postsSearchResult && props.result.data.postsSearchResult} />
+        <Feed class2="search_feed_class" class3="search_feed_container" size="search_size"/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

@@ -34,6 +34,7 @@ function App() {
   const [isChat,setIsChat] = useState(false);
   const [isChatValue,setIsChatValue] = useState();
   const [updateUser,setUpdateUser] = useState(false);
+  const [postSearch,setPostSearch] = useState();
 
   const history = useHistory();
 
@@ -76,6 +77,10 @@ function App() {
     }
     if(action.type == "update"){
       setUpdateUser(false);
+    }
+    if(action.type == "postSearch"){
+      console.log("value",action.value);
+      setPostSearch(action.value)
     }
   }
 
@@ -193,7 +198,7 @@ useEffect(()=>{
 
   return (
     <>
-    <MyContext.Provider value={{allUser,dispatch,result,userData,updateUser}}>
+    <MyContext.Provider value={{allUser,dispatch,result,userData,updateUser,postSearch}}>
     <Router >
       <Switch>
         {Main()}

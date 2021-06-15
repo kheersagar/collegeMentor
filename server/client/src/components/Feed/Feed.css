@@ -124,6 +124,7 @@
   overflow-y: scroll;
   top: 14vh;
   margin-left: -25%;
+  text-align: left;
 }
 .search_feed_class{
   margin-left: 10% !important;
@@ -133,9 +134,24 @@
   left: 50%;
   margin-left: 13vw;
 }
+.main{
+  width: 100% !important;
+}
+.main2{
+  margin: 5% !important;
+  min-width: 10px;
+}
+@media(min-width:1024px){
+  .search_feed_container{
+    min-width: 400px;
+  }
+  .search_size{
+    width: 350px;
+  }
+}
 @media(max-width:640px){
   .feed_main{
-    margin: 20px 0px 20px 0px;
+    margin: 20px auto;
     max-width: 100%;
   }
   .search_feed_container{
@@ -146,11 +162,7 @@
   .feed_loading{
     margin-left: 0vw;
   }
-}
-.main{
-  width: 100% !important;
-}
-.main2{
-  margin: 5% !important;
-  min-width: 10px;
+  .main2{
+    margin: 5% auto !important;
+  }
 }
