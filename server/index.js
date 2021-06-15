@@ -35,7 +35,6 @@ const fileUpload = multer({
         filename: (req, file, cb) => {
             const ext = MIME_TYPE_MAP[file.mimetype];
             cb(null, uuidv4() + "." + ext);
-            console.log(uuidv4())
         },
         fileFilter: (req, file, cb) => {
             const isValid = !!MIME_TYPE_MAP[file.mimetype];
@@ -179,7 +178,6 @@ app.post("/create-post", fileUpload.single('image'), async function (req, res) {
     const timestamp = req.body.timestamp;
     const userId = req.session.user;
     if (req.file) {
-        console.log("file")
         post = new Post({
             Title: Title,
             Description: Description,
@@ -219,19 +217,38 @@ app.post("/create-post", fileUpload.single('image'), async function (req, res) {
 });
 
 app.get("/allPost", async function (req, res) {
-
-    console.log(req.headers.id)
     const check = req.headers.data;
+    const page = parseInt(req.headers.page) ;
+    const limit = parseInt(req.headers.limit);
+    const skipIndex = (page - 1) * limit;
+    console.log("page",page);
+    console.log("limit",limit);
     if (check == "userProfileData") {
-        Post.find({ userId: req.headers.id }).populate('userId').exec((err, posts) => {
+        Post.find({ userId: req.headers.id })        
+        .limit(limit)
+        .skip(skipIndex)
+        .sort({"timestamp":-1})
+        .populate('userId')
+        .exec((err, posts) => {
             if (err) {
                 console.log(err);
             } else {
                 res.send(posts);
             }
         })
-    } else {
-        Post.find().populate('userId').exec((err, posts) => {
+    }
+    else if(req.headers.postSearch){
+        await Post.find({ Title: { $regex: req.headers.postSearch, $options: "i" } }, (err, postResult) => {
+            posts = postResult;
+            res.send(posts);
+        });
+    } 
+    else {
+        Post.find().populate('userId').
+        limit(limit)
+        .skip(skipIndex)
+        .sort({"timestamp":-1})
+        .exec((err, posts) => {
             if (err) {
                 console.log(err);
             } else {
@@ -244,7 +261,6 @@ app.get("/allPost", async function (req, res) {
 });
 
 app.post("/time", function (req, res) {
-    console.log(req.body.values.t1);
     const userId = req.session.user;
     const time = new Timetable({
         userId: userId,
@@ -349,8 +365,6 @@ app.get("/get-table", async (req, res) => {
 })
 
 app.delete("/delete-table/:id", async function (req, res) {
-    console.log(req.params.id);
-
     await Timetable.deleteOne({ _id: req.params.id }, (err, result) => {
         if (err) {
             console.log(err)
@@ -373,7 +387,6 @@ app.get("/userDetail", async (req, res) => {
 app.post("/all", async (req, res) => {
     const value = req.body.value;
     let users, posts;
-    console.log("1", value)
     if (value) {
         await User.find({ username: { $regex: value, $options: "i" } }, (err, userResult) => {
             users = userResult;
@@ -401,25 +414,36 @@ app.post("/recommend",async (req,res)=>{
     var recommend = {
         user:[]
     };
-    await User.findById(req.session.user,(err,result)=>{
-       postSearchKeyword = result.postSearch;
-        // to remove duplicate data in array
-        postSearchKeyword = postSearchKeyword.filter((c,index)=>{
-        return postSearchKeyword.indexOf(c) === index;
-        });
-    });
     try{
-        await postSearchKeyword.map(async(e,index)=>{
-            Post.find({ Title: { $regex: e, $options: "i" } }).populate('userId').exec((err, posts) => {
-                posts.map((post) => {
-                    recommend.user.push(post.userId);
+        await User.findById(req.session.user,(err,result)=>{
+                if(result){
+                    postSearchKeyword = result.postSearch;
+                    // to remove duplicate data in array
+                    postSearchKeyword = postSearchKeyword.filter((c,index)=>{
+                    return postSearchKeyword.indexOf(c) === index;
                 });
-    
-                if (index == (postSearchKeyword.length - 1)) {
-                    res.send(recommend);
                 }
+            }
+            );
+    }catch(Err){
+        console.log(err);
+    }
+
+    try{
+        if(postSearchKeyword){
+            await postSearchKeyword.map(async(e,index)=>{
+                Post.find({ Title: { $regex: e, $options: "i" } }).populate('userId').exec((err, posts) => {
+                    posts.map((post) => {
+                        recommend.user.push(post.userId);
+                    });
+        
+                    if (index == (postSearchKeyword.length - 1)) {
+                        res.send(recommend);
+                    }
+                });
             });
-        });
+        }
+
     }catch(ex){
         console.log(ex);
     }
@@ -430,9 +454,7 @@ app.post("/recommend",async (req,res)=>{
 });
 
 app.get("/study/:code", async (req, res) => {
-    console.log(req.params.code)
     await studyMaterial.find({ code: req.params.code }, (err, result) => {
-        console.log(result)
         res.send(result)
     })
 });
@@ -470,7 +492,6 @@ app.post("/studyMaterial", pdfUpload.fields([
             addressArray.push(result[0].subjects.sub4.materials.pdf);
             addressArray.push(result[0].subjects.sub5.materials.pdf);
             addressArray.push(result[0].subjects.sub6.materials.pdf);
-            console.log("arr", addressArray);
             addressArray.map((e) => {
                 if (e && req.files != null) {
                     return (
@@ -488,9 +509,6 @@ app.post("/studyMaterial", pdfUpload.fields([
 
 
             })
-            console.log(result)
-
-
         })
 
         await studyMaterial.updateOne({ code: code }, {
@@ -550,7 +568,6 @@ app.post("/studyMaterial", pdfUpload.fields([
     });
 
 app.post("/contact", async (req, res) => {
-    console.log(req.body)
     const { firstname, lastname, email, number, subject } = req.body;
 
     const CONTACT = new contactus({
