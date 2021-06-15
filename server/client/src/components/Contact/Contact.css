@@ -5,7 +5,7 @@
 .container{
   display: flex;
   border-radius: 5px;
-  margin-left: 7vw;
+  margin-left: 7.5vw;
   margin-top: 20px;
   height: 80vh;
   width:90vw;
@@ -200,24 +200,35 @@ margin-left: -46%;
       border-radius: 10px;
     }
     .column-2{
+      max-width: 639px;
       border-radius: 10px;
     }
   }
 
+
   @media(max-width:640px){
+    .container{
+      margin-left: 2px;
+    }
     .row_main{
-      width: 90vw;
+      width: -webkit-fill-available;
       left: 0;
       margin: 0;
       top: 10vh;
     }
     .submit_button{
-      bottom: 0.1%;
+      bottom: 0.3rem;
     }
-
   }
+
   @media(max-width:420px){
     .col-50 >div> .Phone_No{
       margin-top: 20px;
+    }
+  }
+
+  @media(max-width:300px){
+    .container{
+      display: contents;
     }
   }

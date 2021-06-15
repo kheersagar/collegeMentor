@@ -45,6 +45,7 @@ label {
   color: #222;
   font-weight: lighter;
   padding-left: 7px;
+  min-width: max-content;
 }
 
 input {
@@ -94,7 +95,7 @@ margin-right: 2%;
  {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 0.5rem;
 }
 
 .firstName,
@@ -161,4 +162,8 @@ margin-right: 2%;
   }
 }
 
-
+@media(max-width:300px){
+  .form-wrapper{
+    font-size: small;
+  }
+}
