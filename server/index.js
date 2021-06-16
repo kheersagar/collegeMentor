@@ -244,17 +244,18 @@ app.get("/allPost", async function (req, res) {
         });
     } 
     else {
-        Post.find().populate('userId').
-        limit(limit)
-        .skip(skipIndex)
-        .sort({"timestamp":-1})
-        .exec((err, posts) => {
-            if (err) {
-                console.log(err);
-            } else {
-                res.send(posts);
-            }
-        })
+        Post.find()
+            .sort({"timestamp":-1})
+            .limit(limit)
+            .skip(skipIndex)
+            .populate('userId')
+            .exec((err, posts) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.send(posts);
+                }
+            })
     }
 
 

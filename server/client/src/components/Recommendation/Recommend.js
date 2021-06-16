@@ -11,8 +11,8 @@ function Recommend(props){
   const [recommendation,setRecommendation] = useState();
   const {allUser,dispatch,userData} = useContext(MyContext);
   let filtered;
-  useEffect(async()=>{
-    const recomm = await axios.post(`/recommend`);
+  useEffect(()=>{
+  axios.post(`/recommend`).then((recomm)=>{
     var rec = [];
     recomm.data.user.map((e)=>{
       rec.push(e);
@@ -20,6 +20,7 @@ function Recommend(props){
     let ids = rec.map(o => o._id)
     filtered = rec.filter(({_id}, index) => !ids.includes(_id, index + 1))   //remove duplicates objects from array
     setRecommendation(filtered);
+  });
   },[]);
     
     return (

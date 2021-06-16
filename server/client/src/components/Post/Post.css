@@ -15,9 +15,9 @@
   position: absolute;
   left: 30%;
   background-image: linear-gradient(#6336aa,#adc7f7);
-  min-width: 500px;
-  max-width: 500px;
-  max-height: 600px;
+  min-width: 400px;
+  max-width: 400px;
+  max-height: 400px;
   padding: 20px;
   border-radius: 10px;
   overflow-y: scroll;
@@ -29,7 +29,7 @@
   /* justify-content: space-between; */
   position: relative;
   width: 100%;
-  height: 50px;
+  height: 30px;
   border-bottom: 1px solid rgb(223, 215, 215);
 }
 
@@ -37,9 +37,9 @@
   position: absolute;
   left:30%;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 550;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Padauk', sans-serif;
   text-align: center;
 
 }
@@ -47,7 +47,7 @@
 .close_button{
   position: absolute;
   right: 0%;
-  top: -10%;
+  top: -15%;
   /* background-color: rgb(215, 221, 223); */
   background-color: #0d0742;
   border-radius: 25px;
@@ -56,13 +56,15 @@
 .user_profile{
   display: flex;
 }
-
+.user_profile_name{
+  margin: auto 5px;
+}
 .user_profile_name >p{
   margin-top: 0px;
   margin-left: 5px;
   color: black;
-  font-size: 1.5rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  font-family: 'Padauk', sans-serif;
   font-weight: 500;
 }
 
@@ -77,10 +79,10 @@
   border: 1px solid rgb(230, 228, 228);
   outline: none;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 600;
   width: 100%;
-  height: 60px;
+  height: 40px;
 }
 
 .post_title:focus{
@@ -88,9 +90,9 @@
 }
 
 .post_title::placeholder{
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-family: 'Akaya Kanadaka', cursive;
+  font-size: 1rem;
+  font-weight: 400;  
+  font-family: 'Padauk', sans-serif;
 }
 
 .description{
@@ -105,9 +107,9 @@
   width: 100%;
   border: none;
   outline: none;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Padauk', sans-serif;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding-left: 15px;
   padding-top: 10px;
   resize: none;
@@ -115,9 +117,9 @@
 }
 
 .description > textarea::placeholder{
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 400;
-  font-family: 'Akaya Kanadaka', cursive;
+  font-family: 'Padauk', sans-serif;
   text-align: justify;
 }
 
@@ -130,9 +132,10 @@ padding-bottom: 20px;
 }
 
 .uploaded_image{
-  max-height: 70%;
+  max-height: 60%;
   width: 100%;
   border-radius: 20px;
+  object-fit: contain;
 }
 
 .image_upload{
@@ -147,9 +150,10 @@ padding-bottom: 20px;
   position: absolute;
   left: 10%;
   padding-top: 5px;
-  font-size: 1.4rem;
-  font-family: cursive;
+  font-size: 1rem;
+  font-family: 'Padauk', sans-serif;
   font-weight: 500;
+  margin-top: 10px;
 }
 .image_button{
   position: absolute;
@@ -159,7 +163,7 @@ padding-bottom: 20px;
 .post_button{
   width: 100%;
   padding: 5px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: rgb(219, 214, 214);
   border-radius: 10px;
   border: none;

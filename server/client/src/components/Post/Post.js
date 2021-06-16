@@ -8,6 +8,8 @@ import { BrowserRouter, Redirect, Route,useHistory } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from "@material-ui/core/IconButton";
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
  
 
 function Post(props) {
@@ -22,6 +24,7 @@ function Post(props) {
   const [isModal,setIsModal] = useState(true);
   const [image,setImage] = useState(false);
   const [randomKey,setRandomKey] = useState();
+  const [isProgress,setIsProgress] = useState(false);
 
   const customStyle ={
     backgroundColor: "rgb(238, 232, 232)"
@@ -42,6 +45,7 @@ function Post(props) {
 
   async function submitHandler(event){
     event.preventDefault();
+    setIsProgress(true);
     setTitle('');
     setDescription('');
     closeClick.current.click();
@@ -55,8 +59,11 @@ function Post(props) {
       formData.append('image',filePicker.current.files[0]);
       formData.append('timestamp',timestamp);
       const x = await axios.post(`/create-post`,formData).then((res)=> {
-        console.log(res);
         props.post();
+        if(res){
+          setIsProgress(false)
+          closeClick.current.click();
+        }
       });
       }
       catch(e){
@@ -116,7 +123,7 @@ function Post(props) {
         Create Post
         </div>
             <div className="close_button">
-              <IconButton ref={closeClick} onClick={modalStateHandler} >
+              <IconButton ref={closeClick} onClick={modalStateHandler} style={{width:"30px",height:"30px"}} >
                 <CloseIcon style={{color:"white"}}/>
               </IconButton>
             </div>
@@ -156,7 +163,7 @@ function Post(props) {
 
             </div>
             <div>
-                <button type="submit"  className="post_button" onClick={clickHandler} style={customStyle} disabled = {Description ? null : "disabled"}>Post</button>
+                <button type="submit"  className="post_button" onClick={clickHandler} style={customStyle} disabled = {Description ? null : "disabled"}>{isProgress ? <CircularProgress size={20} thickness={4} color="secondary" /> : "Post"}</button>
                 
             </div>
         </div>
