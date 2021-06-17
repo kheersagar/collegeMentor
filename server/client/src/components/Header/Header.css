@@ -168,4 +168,7 @@
   .header_middle > .header_icon {
     margin-right: 0px;
   }
+  .header_left{
+    max-width: 75vw;
+  }
 }
