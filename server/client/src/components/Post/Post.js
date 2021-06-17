@@ -59,10 +59,11 @@ function Post(props) {
       formData.append('image',filePicker.current.files[0]);
       formData.append('timestamp',timestamp);
       const x = await axios.post(`/create-post`,formData).then((res)=> {
-        props.post();
-        if(res){
+        if(res.data.uploaded){
           setIsProgress(false)
-          closeClick.current.click();
+          // closeClick.current.click();
+          setIsModal(false);
+          props.post();
         }
       });
       }
