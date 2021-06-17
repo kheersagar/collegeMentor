@@ -87,6 +87,7 @@
 
 .header_right{
   display: flex;
+  transition: all 2s ease;
 }
 .header_profile{
   display: flex;
@@ -133,13 +134,26 @@
   left: 50%;
   margin-left: -44%;
 }
+.dropdown_header{
+  display: none;
+  position: absolute;
+  top: 20%;
+  right: 6%;
+}
 @media(max-width:640px){
   .header_main{
     width: 100vw;
     box-shadow: 0px 0px 5px 5px gray;
   }
+  .dropdown_header{
+    display: block;
+  }
   .header_right{
-    display: none;
+    /* display: none; */
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    right: 0%;
   }
   .header_middle{
     width: 100vw;
@@ -147,6 +161,9 @@
     bottom: 0vh;
     background-color: white;
     justify-content: space-around;
+  }
+  .header_profile{
+    flex-direction: column-reverse;
   }
   .header_middle > .header_icon {
     margin-right: 0px;

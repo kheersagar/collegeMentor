@@ -16,6 +16,7 @@ import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined'
 import ArrowDropDownOutlinedIcon from '@material-ui/icons/ArrowDropDownOutlined';
 import TableChartIcon from '@material-ui/icons/TableChart';
 import TextField from '@material-ui/core/TextField';
+import DehazeRoundedIcon from '@material-ui/icons/DehazeRounded';
 
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
@@ -37,13 +38,13 @@ function Header(props) {
   const [allUserDetails,setAllUserDetails] = useState();
   const [searchQueryResult,setSearchQueryResult] = useState();
   const [isSearchEmpty,setIsSearchEmpty] = useState(false);
+  const [dropdown,setDropDown] = useState(false);
   const history = useHistory();
 
   const {allUser,dispatch,updateUser} = useContext(MyContext) ///using the context
 
   function OpenModal(){
       setIsModal(true); 
-
   }
 
   function HandleChange(){    // This is a callback function, if the close button is clicked 
@@ -180,9 +181,15 @@ function postRender(){
 
   function HeaderRight(){
     return(
-      <div className="header_right">
+      <>
+       <div>
+        <buton type="button" onClick={()=>{setDropDown(state => !state)}} className="dropdown_header">
+          <DehazeRoundedIcon />
+        </buton>
+      </div>
+      <div className="header_right" style={{display: dropdown  ? "flex" : window.innerWidth  > 640 ? "flex" :"none"  }}>
       <div className="header_profile">
-        <IconButton onClick={()=>{dispatch({type:"profile",value:allUserDetails})}}>
+        <IconButton onClick={()=>{dispatch({type:"profile",value:allUserDetails}); setDropDown(false)}}>
           <Avatar src="https://tse1.mm.bing.net/th?id=OIP.6nCVjA0S936UiBlDUsov4QHaE9&pid=Api&P=0&w=245&h=165" fontSize="small" ></Avatar>
         </IconButton>
         <p style={{color:"black" , fontSize:"24px"}}>{allUserDetails ? allUserDetails.data.username : "none"}</p>
@@ -200,7 +207,7 @@ function postRender(){
       </div>
       <div className="message">
       <div class="tooltip">
-      <IconButton >
+      <IconButton onClick={()=>{setDropDown(false)}} >
         <MessageOutlinedIcon  className="header_right_icon"  fontSize="large" />
         </IconButton>
         <span class="tooltiptext">Message</span>
@@ -208,7 +215,7 @@ function postRender(){
       </div>
       <div className="notification">
       <div class="tooltip">
-      <IconButton >
+      <IconButton onClick={()=>{setDropDown(false)}}>
         <NotificationsOutlinedIcon  className="header_right_icon" fontSize="large"/>
         </IconButton>.
         <span class="tooltiptext">Notifications</span>
@@ -216,11 +223,12 @@ function postRender(){
       </div>
       <div className="down_arrow">
       <div class="tooltip">
-        <Dialog end={end} fontSize="small" />
+        <Dialog end={end} fontSize="small" onClick={()=>{setDropDown(false)}}/>
       <span class="tooltiptext">logout</span>
         </div>
       </div>
     </div>
+    </>
     )
   }
 

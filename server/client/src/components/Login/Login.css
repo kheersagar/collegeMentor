@@ -60,9 +60,9 @@
 }
 
 .three span {
-  font-family:'Balsamiq Sans', cursive;
+  font-family: 'Padauk', sans-serif;
   font-size: 4rem;
-  font-weight: 550;
+  font-weight: 500;
 	color: rgb(2, 2, 36);
 	opacity: 0;
 	transform: translate(-300px, 0) scale(0);

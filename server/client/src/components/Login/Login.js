@@ -44,6 +44,10 @@ axios.defaults.withCredentials= true;
         history.push("/home");
       }else{
         setAlert(true);
+        setProgress(false);
+        setTimeout(()=>{
+          setAlert(false);
+        },3000);
       }
       
     }
