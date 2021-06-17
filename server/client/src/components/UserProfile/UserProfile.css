@@ -67,7 +67,7 @@
 
 .col-1>p{
     padding: 0px 0px 10px 60px;
-    font-family: 'Ultra', serif;
+    font-family:'Padauk', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     text-shadow: 1px 1.5px 2px rgb(12, 3, 51);
@@ -78,14 +78,14 @@
 .col-1>b{
     margin: -10px 0px 3px 105px;
     font-size: medium;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:'Padauk', sans-serif;
     color: rgb(99, 98, 98);
     
 }
 
 .content{
     font-size: 1.1rem;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Padauk', sans-serif;
     font-weight: 300;
     padding: 30px 20px 0px 20px;
 }
@@ -96,13 +96,13 @@
 }
 
 .content >p{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Padauk', sans-serif;
     padding-top: 10px;
 }
 
 .profile_content{
-    font-family: 'News Cycle', sans-serif;
-    font-size: 0.9rem;
+    font-family: 'Padauk', sans-serif;
+    font-size: 1rem;
     line-height: 2rem;
     position: relative;
 }
@@ -173,7 +173,7 @@
 .About_me{
     padding: 3px 0px 15px 0px;
     font-size: 1.1rem;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Padauk', sans-serif;
 }
 
 .Nav_box{
@@ -185,7 +185,7 @@
     padding: 20px 10px ;
     font-size: 1.2rem;
     font-weight: 550;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Padauk', sans-serif;
     background: linear-gradient(#d2c5f3,#edd3f7 );
     box-shadow: 0 6px 10px -6px rgb(39, 38, 38);
 }
@@ -194,7 +194,6 @@
     position: unset !important;
     flex-direction: column;
     height: auto;
-    margin-top: 12vh;
     width: 100%;
     padding: 10px;
   }
