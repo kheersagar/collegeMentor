@@ -187,7 +187,7 @@ function postRender(){
           <DehazeRoundedIcon />
         </buton>
       </div>
-      <div className="header_right" style={{display: dropdown  ? "flex" : window.innerWidth  > 640 ? "flex" :"none"  }}>
+      <div className="header_right" style={{display:  window.innerWidth  > 640   ? "flex" : dropdown ? "flex" :"none"  }}>
       <div className="header_profile">
         <IconButton onClick={()=>{dispatch({type:"profile",value:allUserDetails}); setDropDown(false)}}>
           <Avatar src="https://tse1.mm.bing.net/th?id=OIP.6nCVjA0S936UiBlDUsov4QHaE9&pid=Api&P=0&w=245&h=165" fontSize="small" ></Avatar>

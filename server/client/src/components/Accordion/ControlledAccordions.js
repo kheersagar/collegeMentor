@@ -243,14 +243,14 @@ export default function ControlledAccordions(props) {
       return(
         <>
 
-        <Accordion  onChange={handleChange('panel1')} defaultExpanded={true} style={{backgroundColor:"#ba81ee"}}>
+        <Accordion  onChange={handleChange('panel1')} defaultExpanded={true} >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1bh-content"
             id="panel1bh-header"
           >
-            <Typography className={`Year_section $ {classes.heading}`} style={{fontSize:"1.3rem",fontFamily:"'Ultra', serif"}}>{event.value}</Typography>
-            <Typography className={`Fresher_sec $ {classes.secondaryHeading}`} style={{fontSize:"1.1rem",fontFamily:"'Volkhov', serif"}}>{/*I am a Fresher*/}</Typography>
+            <Typography className={`Year_section $ {classes.heading}`} style={{fontSize:"1.3rem",fontFamily: "'Padauk', sans-serif"}}>{event.value}</Typography>
+            <Typography className={`Fresher_sec $ {classes.secondaryHeading}`} style={{fontSize:"1.1rem",fontFamily: "'Padauk', sans-serif"}}>{/*I am a Fresher*/}</Typography>
           </AccordionSummary>
         {/* nested accordion */}
             <Accordion  onChange={handleChange(event.sem1)} expanded={expanded === event.sem1} style={{backgroundColor:"#EEF0FF",margin:"2%"}}>
@@ -259,8 +259,8 @@ export default function ControlledAccordions(props) {
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
               >
-                <Typography className={classes.heading} style={{fontFamily:"'Old Standard TT', serif",fontSize:"1.2rem"}}>{event.sem1}</Typography>
-                <Typography className={classes.secondaryHeading} style={{fontFamily:"'Volkhov', serif", fontSize:"1.1rem",color:"black"}}>{event.Quote_1}</Typography>
+                <Typography className={classes.heading} style={{fontFamily: "'Padauk', sans-serif",fontSize:"1.2rem"}}>{event.sem1}</Typography>
+                <Typography className={classes.secondaryHeading} style={{fontFamily: "'Padauk', sans-serif", fontSize:"1.1rem",color:"black"}}>{event.Quote_1}</Typography>
               </AccordionSummary>
                 <AccordionDetails>
                         <Grid container item sm={12} spacing={3}>
@@ -283,8 +283,8 @@ export default function ControlledAccordions(props) {
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
               >
-                <Typography className={classes.heading} style={{fontFamily:"'Old Standard TT', serif",fontSize:"1.2rem"}}>{event.sem2}</Typography>
-                <Typography className={classes.secondaryHeading}style={{fontFamily:"'Volkhov', serif", fontSize:"1.1rem", color:"black"}}>{event.Quote_2}</Typography>
+                <Typography className={classes.heading} style={{fontFamily: "'Padauk', sans-serif",fontSize:"1.2rem"}}>{event.sem2}</Typography>
+                <Typography className={classes.secondaryHeading}style={{fontFamily: "'Padauk', sans-serif", fontSize:"1.1rem", color:"black"}}>{event.Quote_2}</Typography>
               </AccordionSummary>
                 <AccordionDetails>
                   <Grid container item sm={12} spacing={3}>
