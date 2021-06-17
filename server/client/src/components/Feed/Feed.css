@@ -1,27 +1,23 @@
 .feed_container{
-  position: absolute;
-  top: 10vh;
-  left: 50%;
-  margin-left: -50%;
+  background-color: rgb(224, 222, 222);
+  position: relative;
+  top: 60px;
   max-height: 90vh;
   overflow-y: auto;
 }
 .feed_main{
-  border-radius: 16px;
-  box-shadow: 3px 2px 2px  rgb(206, 206, 207);
+  border-radius: 8px;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 30vw;
   padding-bottom: 20px;
   width: 400px;
-  background: linear-gradient( #acace9, #f5e2e0);
+  background-color: white;
 }
 
 .feed_timestamp{
-  color: grey;
+  color: #464141;
   font-size: 1rem;
-  text-shadow: 1px 1px 1px rgb(194, 188, 188);
-  margin-left: 7px;
   margin-top: 5px;
   
 }
@@ -56,14 +52,13 @@
   margin-bottom: 20px;
   font-weight: 400;
   font-size: 1.4rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Padauk', sans-serif;
   overflow-wrap: break-word;
   
 }
 
 .feed_image{
  padding: 15px;
- border-radius: 16px;
 }
 
 .feed_description{
@@ -74,7 +69,7 @@
   border-bottom: 2px solid #e3e3e3;
   font-weight: 400;
   font-size: 1.4rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Padauk', sans-serif;
   cursor: pointer;
   overflow-y: hidden;
   transition: max-height 0.5s ease;
@@ -115,7 +110,7 @@
 }
 .footer_icon_name{
   color: gray;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Padauk', sans-serif;
   font-weight: 520;
   margin: -10px;
 }
@@ -136,10 +131,12 @@
 }
 .main{
   width: 100% !important;
+  position: absolute;
 }
 .main2{
-  margin: 5% !important;
+  margin: 5% 5% 5% 0 !important;
   min-width: 10px;
+  max-width: 100%;
 }
 @media(min-width:1024px){
   .search_feed_container{
@@ -153,6 +150,7 @@
   .feed_main{
     margin: 20px auto;
     max-width: 100%;
+    border-radius: 0px;
   }
   .search_feed_container{
     margin-left: -10% !important;
