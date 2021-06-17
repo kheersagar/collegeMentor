@@ -208,7 +208,7 @@ margin-left: -46%;
 
   @media(max-width:640px){
     .container{
-      margin-left: 2px;
+      margin:0 auto;
     }
     .row_main{
       width: -webkit-fill-available;
