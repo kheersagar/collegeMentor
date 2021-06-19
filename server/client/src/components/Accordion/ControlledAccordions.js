@@ -249,7 +249,7 @@ export default function ControlledAccordions(props) {
             aria-controls="panel1bh-content"
             id="panel1bh-header"
           >
-            <Typography className={`Year_section $ {classes.heading}`} style={{fontSize:"1.3rem",fontFamily: "'Padauk', sans-serif"}}>{event.value}</Typography>
+            <Typography className={`Year_section $ {classes.heading}`} style={{fontSize:"1.3rem",fontFamily: "'Padauk', sans-serif",fontWeight:"600"}}>{event.value}</Typography>
             <Typography className={`Fresher_sec $ {classes.secondaryHeading}`} style={{fontSize:"1.1rem",fontFamily: "'Padauk', sans-serif"}}>{/*I am a Fresher*/}</Typography>
           </AccordionSummary>
         {/* nested accordion */}

@@ -1,7 +1,13 @@
 .category_main{
   width: 90vw;
-  position: absolute;
+  position: relative;
   top: 12vh;
   left: 50%;
   margin-left: -42%;
+}
+
+@media(max-width:640px){
+  .category_main{
+    top: 4vh;
+  }
 }

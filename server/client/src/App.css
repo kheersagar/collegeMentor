@@ -31,6 +31,7 @@
 .content_main{
   width: 100vw;
   position: relative;
+  background-color: #E1E5EA;
 }
 .progress{
   position: absolute;
