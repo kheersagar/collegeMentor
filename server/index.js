@@ -19,6 +19,7 @@ const cookieParser = require("cookie-parser");
 const post = require("./PostSchema.js");
 const studyMaterial = require("./StudyMaterial");
 const contactus = require("./contacts");
+const Auth  = require("./Middleware/Auth");
 
 const MIME_TYPE_MAP = {
     'image/png': 'png',
@@ -92,7 +93,6 @@ app.use(session({
 
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
 app.use("/uploads/pdf", express.static(path.join("uploads", "pdf")));
-
 if(process.env.NODE_ENV == "production"){
     app.use(express.static("client/build"));
 }
@@ -217,7 +217,7 @@ app.post("/create-post", fileUpload.single('image'), async function (req, res) {
     });
 });
 
-app.get("/allPost", async function (req, res) {
+app.get("/allPost",Auth, async function (req, res) {
     const check = req.headers.data;
     const page = parseInt(req.headers.page) ;
     const limit = parseInt(req.headers.limit);
@@ -376,7 +376,7 @@ app.delete("/delete-table/:id", async function (req, res) {
     })
 });
 
-app.get("/userDetail", async (req, res) => {
+app.get("/userDetail",Auth, async (req, res) => {
     let allUserDetails;
     const userId = req.session.user;
     await User.findOne({ _id: userId }, (err, result) => {
@@ -455,7 +455,7 @@ app.post("/recommend",async (req,res)=>{
    
 });
 
-app.get("/study/:code", async (req, res) => {
+app.get("/study/:code",Auth, async (req, res) => {
     await studyMaterial.find({ code: req.params.code }, (err, result) => {
         res.send(result)
     })
