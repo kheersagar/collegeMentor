@@ -122,12 +122,14 @@ async function check (userName){
   }
   
   function wheelHandler(e){
-    if(e.nativeEvent.wheelDelta > 0){
-      console.log("scrolling up")
-      setIsHeader(true)
-    }else{
-      setIsHeader(false)
-      console.log("scrolling down")
+    if(window.innerWidth < 767 ){
+      if(e.nativeEvent.wheelDelta > 0){
+        console.log("scrolling up")
+        setIsHeader(true)
+      }else{
+        setIsHeader(false)
+        console.log("scrolling down")
+      }
     }
   }
 function Main(){
@@ -160,7 +162,7 @@ function Main(){
       <div >
         <SideNavigation details={userDetails} value={content} onChange={handleChange}/>
       </div>
-      <div className="content_main"  onWheel={(e)=>{wheelHandler(e)}}>
+      <div className="content_main"  onWheel={(e)=>{  wheelHandler(e) }}>
       {isChat ? <Chat value={isChatValue} loggedInUser = {userData}/>  : null}
       {content == 0 || content == 1 ?
         <Feed post={feedState}/>
@@ -181,7 +183,7 @@ function Main(){
         : <CircularProgress color="secondary"  className="progress"/>}    
       </div>
       {content == 0 || content == 1 ?
-      <div style={{position:"relative"}}>
+      <div style={{position:"relative"}} className="recomm_div">
         <Recommend/>
       </div>
       : null}

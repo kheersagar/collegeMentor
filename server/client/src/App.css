@@ -48,10 +48,12 @@
   .home_body{
     background-color: white;
   }
-  .content_main{
-    margin-top: 3rem;
-  }
   .login_page{
+    display: none;
+  }
+}
+@media(max-with:1024px){
+  .recomm_div{
     display: none;
   }
 }

@@ -1,8 +1,7 @@
 .feed_container{
   background-color: rgb(224, 222, 222);
   position: relative;
-  top: 60px;
-  max-height: 90vh;
+  top: 50px;
 }
 .feed_main{
   border-radius: 8px;

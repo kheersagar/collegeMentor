@@ -26,7 +26,7 @@ function Recommend(props){
     return (
 
         <div>
-            <fieldset className="Recommendation_box" style={{display: recommendation? window.innerWidth > 640 ? "block" :null :"none"}}>
+            <fieldset className="Recommendation_box" >
                 <legend className="R_Name">Recommendation</legend>
                 {recommendation ? recommendation.map((e)=>{
                   return(
