@@ -3,7 +3,6 @@
   position: relative;
   top: 60px;
   max-height: 90vh;
-  overflow-y: auto;
 }
 .feed_main{
   border-radius: 8px;

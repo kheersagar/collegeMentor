@@ -32,6 +32,8 @@
   width: 100vw;
   position: relative;
   background-color: #E1E5EA;
+  height: 100vh;
+  overflow: scroll;
 }
 .progress{
   position: absolute;

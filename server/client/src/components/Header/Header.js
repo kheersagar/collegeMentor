@@ -21,12 +21,11 @@ import DehazeRoundedIcon from '@material-ui/icons/DehazeRounded';
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import Post from '../Post/Post';
-import {ModalState} from "../Post/Post";
 import logo from '../../Images/collegMentor.png'
 import axios from 'axios';
 import List from "../List/List";
 import { MyContext } from '../../App';
-
+import {CSSTransition} from 'react-transition-group';
 
 function Header(props) {
   const [isModal,setIsModal] = useState(false);
@@ -41,7 +40,7 @@ function Header(props) {
   const [dropdown,setDropDown] = useState(false);
   const history = useHistory();
 
-  const {allUser,dispatch,updateUser} = useContext(MyContext) ///using the context
+  const {allUser,dispatch,updateUser,isHeader} = useContext(MyContext) ///using the context
 
   function OpenModal(){
       setIsModal(true); 
@@ -235,7 +234,10 @@ function postRender(){
   function mainHeader(){
     return(
       <>
-      <div className="header_main">
+      <CSSTransition         
+        timeout={300}
+        classNames="header">
+      <div className="header_main" style={{display:isHeader ? "flex" : "none"}}>
         <div className="header_left">
               <img src={logo} style={{width:"70px", height:"50px",marginTop:"2px"}}></img>
               <div className="input_field">
@@ -256,7 +258,7 @@ function postRender(){
             <HeaderMiddle />
             <HeaderRight />
       </div> 
-          
+      </CSSTransition>   
       </>
     )
   }

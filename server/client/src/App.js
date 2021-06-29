@@ -18,8 +18,6 @@ import TableInfo from "./components/Timetable/TableInfo";
 import axios from "axios";
 import SearchHeader from "./components/SearchHeader/SearchHeader";
 
-import db from "./components/Firebase/firebase";
-import firebase from "firebase";
 import Recommend from "./components/Recommendation/Recommend"
 const MyContext = createContext();
 
@@ -35,6 +33,7 @@ function App() {
   const [isChatValue,setIsChatValue] = useState();
   const [updateUser,setUpdateUser] = useState(false);
   const [postSearch,setPostSearch] = useState();
+  const [isHeader,setIsHeader] = useState(true);
 
   const history = useHistory();
 
@@ -121,6 +120,16 @@ async function check (userName){
       console.log("entered")
     },0.1);
   }
+  
+  function wheelHandler(e){
+    if(e.nativeEvent.wheelDelta > 0){
+      console.log("scrolling up")
+      setIsHeader(true)
+    }else{
+      setIsHeader(false)
+      console.log("scrolling down")
+    }
+  }
 function Main(){
   return(
     <>
@@ -151,7 +160,7 @@ function Main(){
       <div >
         <SideNavigation details={userDetails} value={content} onChange={handleChange}/>
       </div>
-      <div className="content_main">
+      <div className="content_main"  onWheel={(e)=>{wheelHandler(e)}}>
       {isChat ? <Chat value={isChatValue} loggedInUser = {userData}/>  : null}
       {content == 0 || content == 1 ?
         <Feed post={feedState}/>
@@ -198,7 +207,7 @@ useEffect(()=>{
 
   return (
     <>
-    <MyContext.Provider value={{allUser,dispatch,result,userData,updateUser,postSearch}}>
+    <MyContext.Provider value={{allUser,dispatch,result,userData,updateUser,postSearch,isHeader}}>
     <Router >
       <Switch>
         {Main()}
