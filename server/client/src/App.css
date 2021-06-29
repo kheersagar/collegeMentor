@@ -51,6 +51,9 @@
   .login_page{
     display: none;
   }
+  .content_main{
+    margin-top: 3rem;
+  }
 }
 @media(max-with:1024px){
   .recomm_div{
