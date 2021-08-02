@@ -1,6 +1,6 @@
 import React, { useState,useEffect, useContext, createContext, useReducer } from "react";
 import Login from "./components/Login/Login";
-import {BrowserRouter as Router, Redirect, Switch,Route,useHistory,} from "react-router-dom";
+import {HashRouter as Router, Redirect, Switch,Route,useHistory,} from "react-router-dom";
 import Register from "./components/Login/Register";
 import Header from "./components/Header/Header";
 import Feed from "./components/Feed/Feed";
