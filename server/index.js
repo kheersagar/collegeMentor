@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const User = require("./user.js");
 const Post = require("./PostSchema.js");
 const Timetable = require("./TimetableSchema.js");
+const template = require('./emailTemplate');
+const transporter = require('./email');
 
 
 const cors = require('cors');
@@ -111,6 +113,24 @@ app.post("/register", (req, res) => {
                 // console.log(username, email, salt, hash);
                 const user = new User({ username: username, email: email, salt: salt, password: hash });
                 await user.save();
+								var temp = template(username,email);
+                var mailOptions = {
+                  from: 'rahhar848@gmail.com',
+                  to: email,
+                  subject: 'Sending Email using Node.js',
+                  text: 'That was easy!',
+                  html:`${temp}`
+                };
+
+                await transporter.sendMail(mailOptions, function(error, info){
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    console.log('Email sent: ' + info.response);
+                  }
+                });
+
+
                 res.send({ status: "successfully registered" });
             });
         });
