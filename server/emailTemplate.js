@@ -1,6 +1,6 @@
 var template = (name,email)=>{
   return `
-  <head>
+<head>
   <!--[if gte mso 9]>
   <xml>
     <o:OfficeDocumentSettings>
@@ -102,8 +102,8 @@ var template = (name,email)=>{
   
   <div class="u-row-container" style="padding: 0px;background-color: transparent">
     <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
-      <div style="border-collapse: collapse;display: table;width: 100%;background-image: url('https://drive.google.com/file/d/1mqEROv6CYpUWaUqO-zEU7Y6vqNHEHVSV/view?usp=sharing');background-repeat: no-repeat;background-position: center top;background-color: transparent;">
-        <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-image: url('https://drive.google.com/file/d/1HEXcN6nSOfS6TDsZl8SO1xTualpaoh39/view?usp=sharing');background-repeat: no-repeat;background-position: center top;background-color: transparent;"><![endif]-->
+      <div style="border-collapse: collapse;display: table;width: 100%;background-image: url('cid:image-7.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;">
+        <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-image: url('images/image-7.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;"><![endif]-->
         
   <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
   <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
@@ -119,7 +119,7 @@ var template = (name,email)=>{
     <tr>
       <td style="padding-right: 0px;padding-left: 0px;" align="center">
         
-        <img align="center" border="0" src="https://drive.google.com/file/d/1C0ddDIqYJ-KhMOj8IhkQBwj1QqfzHW-S/view?usp=sharing" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 26%;max-width: 150.8px;" width="150.8"/>
+        <img align="center" border="0" src="cid:image-5.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 26%;max-width: 150.8px;" width="150.8"/>
         
       </td>
     </tr>
@@ -154,7 +154,7 @@ var template = (name,email)=>{
   <div align="center">
     <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:'Montserrat',sans-serif;"><tr><td style="font-family:'Montserrat',sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:41px; v-text-anchor:middle; width:108px;" arcsize="0%" stroke="f" fillcolor="#fcd283"><w:anchorlock/><center style="color:#000000;font-family:'Montserrat',sans-serif;"><![endif]-->
       <a href="" target="_blank" style="box-sizing: border-box;display: inline-block;font-family:'Montserrat',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #000000; background-color: #fcd283; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
-        <span style="display:block;padding:12px 30px;line-height:120%;"><strong><span style="font-size: 14px; line-height: 16.8px;">${email}</span></strong></span>
+        <span style="display:block;padding:12px 30px;line-height:120%;"><strong><span style="font-size: 14px; line-height: 16.8px;">Email - ${email}</span></strong></span>
       </a>
     <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
   </div>
@@ -251,7 +251,7 @@ var template = (name,email)=>{
       <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 23px">
         <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
           <a href=" " title="Facebook" target="_blank">
-            <img src="https://drive.google.com/file/d/1JWEQSlSbFlccSt_DO_hVJxuyJItUKLUv/view?usp=sharing" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+            <img src="cid:image-1.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
           </a>
         </td></tr>
       </tbody></table>
@@ -261,7 +261,7 @@ var template = (name,email)=>{
       <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 23px">
         <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
           <a href=" " title="Twitter" target="_blank">
-            <img src="https://drive.google.com/file/d/1JWEQSlSbFlccSt_DO_hVJxuyJItUKLUv/view?usp=sharing" alt="Twitter" title="Twitter" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+            <img src="cid:image-2.png" alt="Twitter" title="Twitter" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
           </a>
         </td></tr>
       </tbody></table>
@@ -271,7 +271,7 @@ var template = (name,email)=>{
       <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 23px">
         <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
           <a href=" " title="LinkedIn" target="_blank">
-            <img src="https://drive.google.com/file/d/1roKBPm-sr54KGcqMzGoQ-dn26JnHj9Un/view?usp=sharing" alt="LinkedIn" title="LinkedIn" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+            <img src="cid:image-3.png" alt="LinkedIn" title="LinkedIn" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
           </a>
         </td></tr>
       </tbody></table>
@@ -281,7 +281,7 @@ var template = (name,email)=>{
       <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 23px">
         <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
           <a href=" " title="Instagram" target="_blank">
-            <img src="https://drive.google.com/file/d/1qCSMNkIjrmB0UIpBufUzE6W0CSXfAVNH/view?usp=sharing" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+            <img src="cid:image-6.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
           </a>
         </td></tr>
       </tbody></table>
@@ -291,7 +291,7 @@ var template = (name,email)=>{
       <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
         <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
           <a href=" " title="YouTube" target="_blank">
-            <img src="https://drive.google.com/file/d/16zpwZbOFxbpUDiGoiJqWb3KFuYndYIj_/view?usp=sharing" alt="YouTube" title="YouTube" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+            <img src="cid:image-4.png" alt="YouTube" title="YouTube" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
           </a>
         </td></tr>
       </tbody></table>
@@ -388,6 +388,7 @@ var template = (name,email)=>{
     <!--[if mso]></div><![endif]-->
     <!--[if IE]></div><![endif]-->
   </body>
+ 
 `
 }
 module.exports = template;
