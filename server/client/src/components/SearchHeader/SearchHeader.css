@@ -13,6 +13,7 @@
 }
 @media(max-width:640px){
   .search__header__main{
+    top: 4rem;
     margin: 0%;
   }
 }

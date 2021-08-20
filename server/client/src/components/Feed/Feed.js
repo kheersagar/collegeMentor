@@ -80,7 +80,9 @@ function Feed(props) {
     renderPost();
   }
 function handleScroll(e){
-  var bottom = e.target.scrollHeight - e.target.scrollTop == e.target.clientHeight;
+  console.log("working");
+  var bottom = e.target.scrollHeight - e.target.scrollTop === ( e.target.clientHeight);
+  console.log(bottom);
   if (bottom) {  
     setLoading(true);
     setPage((prev)=> prev+1)

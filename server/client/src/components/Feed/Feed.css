@@ -2,6 +2,8 @@
   background-color: rgb(224, 222, 222);
   position: relative;
   top: 50px;
+  height: 90%;
+  overflow: scroll;
 }
 .feed_main{
   border-radius: 8px;
@@ -115,12 +117,12 @@
 .search_feed_container{
   height: 75vh !important;
   overflow-y: scroll;
-  top: 14vh;
-  margin-left: -25%;
+  top: 0;
+  /* margin-left: -25%; */
   text-align: left;
 }
 .search_feed_class{
-  margin-left: 10% !important;
+  transform: translate(-50%,0%);
 }
 .feed_loading{
   position: relative;
@@ -136,6 +138,9 @@
   min-width: 10px;
   max-width: 100%;
 }
+.MuiBox-root-35{
+ padding: 0% !important;
+}
 @media(min-width:1024px){
   .search_feed_container{
     min-width: 400px;
@@ -145,15 +150,18 @@
   }
 }
 @media(max-width:640px){
+  .search_feed_class{
+    transform: translate(0%,0%);
+  }
   .feed_main{
     margin: 20px auto;
     max-width: 100%;
     border-radius: 0px;
   }
   .search_feed_container{
-    margin-left: -10% !important;
+    /* margin-left: -10% !important; */
     top: 0%;
-    padding: 2rem;
+    /* padding: 2rem; */
   }
   .feed_loading{
     margin-left: 0vw;
