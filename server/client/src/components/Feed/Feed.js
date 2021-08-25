@@ -71,6 +71,7 @@ function Feed(props) {
     console.log(x);
   }
   useEffect(() => {
+    setLoading(true);
     renderPost();
   }, [props.id]);
 
@@ -148,7 +149,6 @@ function Feed(props) {
                         <ThumbUpAltOutlinedIcon fontSize="medium" />{" "}
                         <span className="footer_icon_name"></span>
                       </div>
-                      {/* <div className="comment"><ChatBubbleOutlineIcon fontSize="medium" /><span className="footer_icon_name"></span></div> */}
                     </div>
                   </div>
                 </div>
@@ -156,13 +156,13 @@ function Feed(props) {
             );
           });
         })
-      ) : (
+      ) : 
         <>
           <FeedSkeleton  />
           <FeedSkeleton  />
         </>
-      )}
-      {!loading ? (
+      }
+      {loading ? (
         <>
           <FeedSkeleton  />
           <FeedSkeleton  />
