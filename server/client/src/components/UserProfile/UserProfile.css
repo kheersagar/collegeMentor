@@ -46,6 +46,7 @@
     overflow-wrap: anywhere;
     flex-direction: column;
     width: 90vw;
+    border-radius: 0 20px 0 0;
     box-shadow: 0 4px 8px 0  rgba(16, 9, 49, 0.2), 0 6px 20px 0 rgba(16, 9, 49, 0.2);
     margin-left: 5px;
     margin-right: 5px;
@@ -168,6 +169,7 @@
     height: auto;
     width: 100%;
     padding: 10px;
+    padding-bottom:3.4375rem;
   }
   .col-1{
     width: 100%;
