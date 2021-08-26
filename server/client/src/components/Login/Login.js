@@ -85,7 +85,7 @@ axios.defaults.withCredentials= true;
                   <MailOutlineIcon fontSize="large"  />
                 </div>
                 <div style={{  width: "100%" , margin: "-17px 16px 27px 10px;",backgroundColor:"transparent" }} className="test_username">
-                  <span style={{ color: "grey", fontSize: "1.6rem" }}>Username</span>
+                  <span style={{ color: "grey", fontSize: "1.3rem" }}>Username</span>
                   <br />
                   <Field name="username" type="text" className="in" />
                   {errors.username && touched.username ? (
@@ -99,7 +99,7 @@ axios.defaults.withCredentials= true;
                   <LockOutlinedIcon fontSize="large" />
                 </div>
                 <div style={{ width: "100%  " ,backgroundColor:"transparent" }}  className="test_password"  >
-                  <span style={{ color: "grey", fontSize: "1.6rem" }}>Password</span>
+                  <span style={{ color: "grey", fontSize: "1.3rem" }}>Password</span>
                   <br/>
                   <Field name="password" type="password"   className="pass" />
                   {errors.password && touched.password ? (

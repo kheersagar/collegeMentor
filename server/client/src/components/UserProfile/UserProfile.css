@@ -30,12 +30,14 @@
 }
 
 .col-1{
+    color: white;
     width: 50vw;
-    background: linear-gradient(  #d4cef8, #ead4f8, #f0e0f8);
+    background: #857EF2;
+    border-radius: 20px 0px 0px 20px;
     box-shadow: 0 4px 8px 0 rgba(16, 9, 49, 0.2), 0 6px 20px 0 rgba(16, 9, 49, 0.2);
     display: flex;
     flex-direction: column;
-    padding: 25px 20px 0px 30px;
+    padding: 15px 15px 0px 15px;
 }
 
 .col-2{
@@ -103,54 +105,22 @@
 .profile_content{
     font-family: 'Padauk', sans-serif;
     font-size: 1rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
 }
 
 .label{
-    color: rgb(22, 44, 131);
-   font-weight: bold;
-   /* margin-right: 10px; */
-   
+    color: white;
+   font-weight: bold;  
 }
 
 .Gender{
    padding-right: 45px; 
 }
-
-.DOB{
-    /* padding-right: 10px; */
-}
-
-.Country{
-    /* padding-right: 45px */
-}
-
-.Collage{
-    /* padding-right: 47px; */
-}
-
-.Study{
-   /* padding-right: 60px; */
-}
-
-.Batch-year{
-    /* padding-right: 25px; */
-}
-
-.PNumber{
-    /* padding-right: 30px; */
-}
-
-.Email{
-    /* padding-right: 40px; */
-}
-
 .Social_icon{
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 0;
-    padding-top: 50%;
 }
 
 .Instagram_icon :hover{
@@ -180,13 +150,15 @@
     position: sticky;
     top: 0;
     z-index: 10;
+    color: white;
     display: flex;
     justify-content: space-around;
     padding: 20px 10px ;
     font-size: 1.2rem;
     font-weight: 550;
     font-family:'Padauk', sans-serif;
-    background: linear-gradient(#d2c5f3,#edd3f7 );
+    background: #211B71;
+    border-radius: 0px 20px 0px 0px;
     box-shadow: 0 6px 10px -6px rgb(39, 38, 38);
 }
 @media(max-width:640px){
@@ -221,9 +193,6 @@
     margin-bottom: 70px;
     max-width: 100vw;
     height: 80%;
-  }
-  .Social_icon{
-    padding-top: 10%;
   }
 }
 

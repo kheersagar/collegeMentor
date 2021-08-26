@@ -16,9 +16,6 @@
 .login_page{
   width: 80%;
   height: 100vh;
-  background-image: url("https://image.freepik.com/free-vector/online-registration-sign-up-with-man-sitting-near-smartphone_268404-95.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
 
 }
 
@@ -44,15 +41,28 @@
 ::-webkit-scrollbar {
   display: none;
 }
+.login_page > img{
+  width: inherit;
+}
 @media(max-width:640px){
   .home_body{
     background-color: white;
   }
   .login_page{
-    display: none;
+    height: auto;
+  }
+  .login_page > img{
+    width: -webkit-fill-available;
   }
   .content_main{
     margin-top: 3rem;
+  }
+  .login{
+    height: auto;
+    flex-direction: column-reverse;
+  }
+  .auth_details{
+    padding-right: 20px;
   }
 }
 @media(max-with:1024px){

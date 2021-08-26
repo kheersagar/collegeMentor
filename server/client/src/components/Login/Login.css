@@ -182,7 +182,7 @@
 
   .create_account_button{
     /* min-width: max-content; */
-    width:150px;
+    max-width:150px;
     height: 50px;
     margin-left: 12px;
     font-size: 1.2rem;
@@ -211,7 +211,7 @@
     border: none;
     outline:none;
     background-color: transparent;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     max-width: 220px;
     overflow-x: scroll;
   }
@@ -219,20 +219,17 @@
     border: none;
     outline:none;
     background-color: transparent;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     max-width: 220px;
     overflow-x: scroll;
   }
 
   .test_username{
-    margin: 3px 60px 13px 0px;
     padding: 1px 21px 12px 10px;
   }
 
 
   .test_password{
-    /* display: flex; */
-    margin: 3px 60px 51px 0px;
     padding: 1px 21px 12px 10px;
 }
 .test_password_2{
@@ -249,6 +246,27 @@
   background-color:transparent;
   font-size: 1.2rem;
 }
-
-  
+@media(max-width:640px){
+  .auth_field_username,
+  .auth_field_password{
+    margin-left: auto;
+  }
+  .auth_details{
+    margin-right: 0;
+    margin-left: 0%;
+  }
+  .login_button{
+    width: 120px;
+  }
+  .create_account_button{
+    max-width: 120px;
+  }
+  .three span{
+    font-size: 3rem;
+  }
+  .pass ,
+  .in{
+    max-width: 150px;
+  }
+}
   

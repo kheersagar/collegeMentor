@@ -18,7 +18,9 @@ import TableInfo from "./components/Timetable/TableInfo";
 import axios from "axios";
 import SearchHeader from "./components/SearchHeader/SearchHeader";
 
-import Recommend from "./components/Recommendation/Recommend"
+import Recommend from "./components/Recommendation/Recommend";
+
+import image from "./Images/login.png";
 const MyContext = createContext();
 
 function App() {
@@ -121,17 +123,6 @@ async function check (userName){
     },0.1);
   }
   
-  function wheelHandler(e){
-    if(window.innerWidth < 767 ){
-      if(e.nativeEvent.wheelDelta > 0){
-        console.log("scrolling up")
-        setIsHeader(true)
-      }else{
-        setIsHeader(false)
-        console.log("scrolling down")
-      }
-    }
-  }
 function Main(){
   return(
     <>
@@ -149,6 +140,7 @@ function Main(){
       </>  
       : null
          }
+         <img src={image} ></img>
       </div>
       {user == "register" ? <Register userHandler={changeUserHandler}/> : <Login login={check} userHandler={changeUserHandler}/>}
 
@@ -162,7 +154,7 @@ function Main(){
       <div >
         <SideNavigation details={userDetails} value={content} onChange={handleChange}/>
       </div>
-      <div className="content_main"  onWheel={(e)=>{  wheelHandler(e) }}>
+      <div className="content_main" >
       {isChat ? <Chat value={isChatValue} loggedInUser = {userData}/>  : null}
       {content == 0 || content == 1 ?
         <Feed post={feedState}/>

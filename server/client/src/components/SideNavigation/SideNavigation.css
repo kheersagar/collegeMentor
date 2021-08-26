@@ -1,7 +1,7 @@
 
 .side_nav{
     width: 65px;
-    height: 100vh;
+    height: 34rem;
     position: fixed;
     top:4rem;
     z-index: 10;
@@ -11,7 +11,12 @@
     color: rgb(252, 252, 252);
     overflow-x: hidden;
     transition: all 1s ease;
-    background-color: rgb(81, 26, 145);
+    background: #1A0936;
+    border-radius: 0px 30px 30px 0px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 27px;
+    line-height: 35px;
 }
 .side_nav:hover{
     transition-duration: 0.5s;
@@ -26,7 +31,9 @@
 }
 
 .user_profile:hover{
-    background-color: rgb(138, 111, 235);     
+    background: #C4C4C4;
+    border-radius: 20px;    
+    color: #000000;
 }
 
 .friends{
@@ -37,7 +44,9 @@
 }
 
 .friends:hover{
-    background-color: rgb(138, 111, 235);   
+    background: #C4C4C4;
+    border-radius: 20px;  
+    color: #000000;
 }
 
 .events{
@@ -48,7 +57,9 @@
 }
 
 .events:hover{
-    background-color: rgb(138, 111, 235);
+    background: #C4C4C4;
+    border-radius: 20px;
+    color: #000000;
 }
 
 .groups{
@@ -59,7 +70,9 @@
 }
 
 .groups:hover{
-    background-color: rgb(138, 111, 235);    
+    background: #C4C4C4;
+    border-radius: 20px;   
+    color: #000000;
 }
 
 .pages{
@@ -70,7 +83,9 @@
 }
 
 .pages:hover{
-    background-color: rgb(138, 111, 235);   
+    background: #C4C4C4;
+    border-radius: 20px;  
+    color: #000000;
 }
 
 .side_nav_icon_name{
