@@ -103,7 +103,12 @@ async function check (userName){
    if(response.data.loggedIn){
      setLoginStatus(response.data.loggedIn);  
    }else{
-     history.push("/login");
+    //  history.push("/login");
+    // <Router>
+    //   <Route exact path="/login" >
+    //   </Route>
+    // </Router>
+    <Redirect to="/login" />
    }
   }
 

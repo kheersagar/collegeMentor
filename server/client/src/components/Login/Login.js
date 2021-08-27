@@ -41,7 +41,12 @@ axios.defaults.withCredentials= true;
       })
       if(loginState.data.state == "loggedIn"){
         props.login(loginState.data.userName);
-        history.push("/home");
+        // history.push("/home");
+        // <Router>
+        //   <Route exact path="/home" >
+        //   </Route>
+        // </Router>
+        <Redirect to="/home" />
       }else{
         setAlert(true);
         setProgress(false);
