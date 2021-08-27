@@ -44,6 +44,10 @@
 .login_page > img{
   width: inherit;
 }
+.editor_frame{
+  margin: 4rem auto;
+  padding-left: 3.2rem;
+}
 @media(max-width:640px){
   .home_body{
     background-color: white;
@@ -63,6 +67,11 @@
   }
   .auth_details{
     padding-right: 20px;
+  }
+  .editor_frame{
+    margin: 1rem auto 0 auto;
+    padding-left: 0;
+    z-index: 1;
   }
 }
 @media(max-with:1024px){

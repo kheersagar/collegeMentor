@@ -186,4 +186,7 @@
   .add,.message,.notification{
     margin-right: 0;
   }
+  .tooltip .tooltiptext{
+    margin-top: -5rem;
+  }
 }

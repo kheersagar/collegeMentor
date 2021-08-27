@@ -6,7 +6,6 @@ import AddCircleSharpIcon from '@material-ui/icons/AddCircleSharp';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
 import {Avatar,IconButton,makeStyles } from '@material-ui/core';
 import { MyContext } from '../../App';
 

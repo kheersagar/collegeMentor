@@ -112,7 +112,7 @@ axios.defaults.withCredentials= true;
                   ) : null}
                 </div>
               </div>
-              <div style={{display:"flex"}}>
+              <div style={{display:"flex",width:"100%",justifyContent:"space-evenly"}}>
                 <div>
                   <button type="submit" className="login_button" onClick={(()=>{setProgress(true);})} > {progress ? <CircularProgress size={20} thickness={4} color="secondary" /> : "Login"} </button>
                 </div>

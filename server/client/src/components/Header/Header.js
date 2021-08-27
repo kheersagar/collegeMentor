@@ -1,22 +1,19 @@
 import React, { createContext, useEffect, useState,useContext } from 'react'
 import {useHistory} from "react-router-dom";
-import Input from "../Input";
 import "./Header.css";
 import Dialog from "../Dialog/Dialog";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
-import SearchTwoToneIcon from '@material-ui/icons/SearchTwoTone';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import BusinessCenterRoundedIcon from '@material-ui/icons/BusinessCenterRounded';
 import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
 import ContactSupportRoundedIcon from '@material-ui/icons/ContactSupportRounded';
-import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
 import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
-import ArrowDropDownOutlinedIcon from '@material-ui/icons/ArrowDropDownOutlined';
-import TableChartIcon from '@material-ui/icons/TableChart';
 import TextField from '@material-ui/core/TextField';
 import DehazeRoundedIcon from '@material-ui/icons/DehazeRounded';
+import CodeIcon from '@material-ui/icons/Code';
+
 
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
@@ -32,7 +29,7 @@ function Header(props) {
   const [home_active,setHomeActive] = useState(false);
   const [user_active,setUserActive] = useState(false);
   const [member_active,setMemberActive] = useState(false);
-  const [Table,setTable] = useState(false);
+  const [Code,setCode] = useState(false);
   const [help_active,setHelpActive] = useState(false);
   const [allUserDetails,setAllUserDetails] = useState();
   const [searchQueryResult,setSearchQueryResult] = useState();
@@ -107,7 +104,7 @@ function postRender(){
                     setMemberActive(false);
                     setUserActive(false);
                     setHelpActive(false);
-                    setTable(false);
+                    setCode(false);
                     setHomeActive(true);}}>
                     <HomeRoundedIcon fontSize="medium"  style={{color: home_active || props.value == 0 ? "blue" : null}}/>
                   </IconButton>
@@ -121,7 +118,7 @@ function postRender(){
                   setMemberActive(false);
                   setUserActive(true);
                   setHelpActive(false);
-                  setTable(false);
+                  setCode(false);
                   setHomeActive(false);
                   }}>
                   <BusinessCenterRoundedIcon fontSize="medium" style={{color: user_active  ? "blue" : null}}/>
@@ -136,7 +133,7 @@ function postRender(){
                   setMemberActive(true);
                   setUserActive(false);
                   setHelpActive(false);
-                  setTable(false);
+                  setCode(false);
                   setHomeActive(false);
                   }} >
                   <PeopleAltRoundedIcon fontSize="medium" style={{color: member_active  ? "blue" : null}} />
@@ -145,18 +142,18 @@ function postRender(){
                 </div>
                 </div>
                 <div className="header_icon">
-                <div class="tooltip" style={{borderBottom: Table ? "3px solid blue" : null}}>
+                <div class="tooltip" style={{borderBottom: Code ? "3px solid blue" : null}}>
                 <IconButton onClick={()=>{
                   props.onChange(5)
                   setMemberActive(false);
                   setUserActive(false);
                   setHelpActive(false);
                   setHomeActive(false);
-                  setTable(true);
+                  setCode(true);
                   }} >
-                  <TableChartIcon fontSize="medium" style={{color: Table  ? "blue" : null}} />
+                  <CodeIcon fontSize="medium" style={{color: Code  ? "blue" : null}} />
                   </IconButton>
-                  <span class="tooltiptext">Table</span>
+                  <span class="tooltiptext">Code</span>
                 </div>
                 </div>
                 <div className="header_icon">
@@ -167,7 +164,7 @@ function postRender(){
                   setUserActive(false);
                   setHelpActive(true);
                   setHomeActive(false);
-                  setTable(false);
+                  setCode(false);
                   }} >
                   <ContactSupportRoundedIcon fontSize="medium" style={{color: help_active  ? "blue" : null}}/>
                   </IconButton>

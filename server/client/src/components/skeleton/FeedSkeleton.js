@@ -1,5 +1,4 @@
 import { Avatar, } from '@material-ui/core'
-import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./FeedSkeleton.css";
 

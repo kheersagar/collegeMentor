@@ -1,10 +1,8 @@
 import {React,useState,useEffect,createContext,useRef} from 'react'
 import "./Post.css";
 import Input from "../Input";
-import Button from "../Button/Button"
 import Avatar from "@material-ui/core/Avatar";
 import axios from 'axios';
-import { BrowserRouter, Redirect, Route,useHistory } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from "@material-ui/core/IconButton";
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';

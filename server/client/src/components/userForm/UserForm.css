@@ -132,6 +132,7 @@ margin-right: 2%;
   font-weight: lighter;
   letter-spacing: 1px;
   margin-bottom: 0.25em;
+  border-radius:8px;
 }
 
 .createAccount button:hover {

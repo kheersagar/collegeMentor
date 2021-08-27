@@ -1,11 +1,8 @@
 import React from 'react';
-import Avatar from "@material-ui/core/Avatar";
 import "./SideNavigation.css";
 import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
-import EventAvailableRoundedIcon from '@material-ui/icons/EventAvailableRounded';
 import PeopleAltTwoToneIcon from '@material-ui/icons/PeopleAltTwoTone';
 import FlagRoundedIcon from '@material-ui/icons/FlagRounded';
-import { orange } from '@material-ui/core/colors';
 import SupervisorAccountRoundedIcon from '@material-ui/icons/SupervisorAccountRounded';
 
 function SideNavigation(props) {

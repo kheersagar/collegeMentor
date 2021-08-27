@@ -125,7 +125,7 @@ function Register(props) {
                   </div>
                 </div>
               </div>
-              <div style={{display:"flex"}}>
+              <div style={{display:"flex",width:"100%",justifyContent:"space-evenly"}}>
               <div>
                 <button type="submit"  className="Register_button" onClick={(()=>{setProgress(true);})}>{progress ? <CircularProgress size={20} thickness={4} color="secondary" /> : "Register"}</button>
               </div>
