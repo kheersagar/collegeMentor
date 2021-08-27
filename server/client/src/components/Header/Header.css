@@ -97,6 +97,8 @@
 }
 
 .header_profile > p{
+  max-width: 55px;
+  overflow: hidden;
   margin-top: 20px;
   margin-left: 5px;
   height: fit-content;

@@ -181,7 +181,7 @@
   }
 
   .create_account_button{
-    /* min-width: max-content; */
+    min-width: 120px;
     max-width:150px;
     height: 50px;
     margin-left: 12px;
@@ -234,7 +234,6 @@
 }
 .test_password_2{
   display: flex;
-  margin: 3px 60px 51px 0px;
   padding: 1px 21px 12px 10px;
 }
 
@@ -268,6 +267,13 @@
   .pass ,
   .in{
     max-width: 75%;
+  }
+  .view_button{
+    margin-top: 1.5rem;
+    margin-left: -3.2rem;
+  }
+  .auth_field_email{
+    margin-left: 0;
   }
 }
   
