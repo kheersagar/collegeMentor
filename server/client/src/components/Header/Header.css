@@ -164,7 +164,9 @@
     right: 0%;
     background: #1E0A3E;
     border-radius: 0px 0px 30px 30px;
+    overflow: hidden;
   }
+
   .header_middle{
     width: 100vw;
     position: fixed;

@@ -13,6 +13,7 @@ function Feed(props) {
   const [descriptinHeight, setDescriptionHeight] = useState(false);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [scroll,setScroll]  = useState(0);
 
   const { postSearch } = useContext(MyContext);
   async function renderPost() {
@@ -80,7 +81,7 @@ function Feed(props) {
   }
   function handleScroll(e) {
     var bottom =
-      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+      e.target.scrollHeight - e.target.scrollTop <= (e.target.clientHeight + 10);
     if (bottom) {
       setLoading(true);
       setPage((prev) => prev + 1);
