@@ -95,13 +95,6 @@ app.use(session({
 
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
 app.use("/uploads/pdf", express.static(path.join("uploads", "pdf")));
-if(process.env.NODE_ENV == "production"){
-    app.use(express.static("client/build"));
-}
-
-app.listen(process.env.PORT || 8080, () => {
-    console.log(`server started on port ${process.env.PORT}`);
-})
 
 
 app.post("/register", (req, res) => {
@@ -648,3 +641,14 @@ app.post("/contact", async (req, res) => {
     
 
 });
+
+if(process.env.NODE_ENV == "production"){
+    app.use(express.static("client/build"));
+    app.get("*",(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+    })
+}
+
+app.listen(process.env.PORT || 8080, () => {
+    console.log(`server started on port ${process.env.PORT}`);
+})

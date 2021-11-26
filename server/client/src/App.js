@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import Login from "./components/Login/Login";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Redirect,
   Switch,
   Route,
